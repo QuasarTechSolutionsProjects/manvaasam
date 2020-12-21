@@ -1,2 +1,2 @@
 # manvaasam
-Manvaasam Logitics Application
+Manvaasam Logistics Application
