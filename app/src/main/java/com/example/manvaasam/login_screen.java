@@ -14,7 +14,7 @@ public class login_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
         adminbut = (ImageView) findViewById(R.id.adminlogbut);
-        courbut = (ImageView) findViewById(R.id.courierlogbut);
+        courbut = (ImageView) findViewById(R.id.signinbut);
         adminbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
