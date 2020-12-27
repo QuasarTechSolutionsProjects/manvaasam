@@ -19,6 +19,7 @@ public class login_screen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(login_screen.this,signin.class);
+                intent.putExtra("choice","12345");
                 startActivity(intent);
                 finish();
             }
@@ -27,6 +28,7 @@ public class login_screen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(login_screen.this,signin.class);
+                intent.putExtra("choice","98765");
                 startActivity(intent);
                 finish();
             }
