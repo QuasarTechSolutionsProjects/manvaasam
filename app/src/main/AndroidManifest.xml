@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".track"></activity>
+        <activity android:name=".trackweb"></activity>
+        <activity android:name=".track" />
         <activity android:name=".sucess" />
         <activity android:name=".trackpack" />
         <activity android:name=".createpack" />
