@@ -103,8 +103,7 @@ public class createpackage extends AsyncTask<String, Void,String> {
 
             OutputStream ops = http.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(ops,"UTF-8"));
-            String data = URLEncoder.encode("sid","UTF-8")+"="+URLEncoder.encode(id,"UTF-8")
-                    +"&&"+URLEncoder.encode("fname","UTF-8")+"="+URLEncoder.encode(fname,"UTF-8")
+            String data = URLEncoder.encode("fname","UTF-8")+"="+URLEncoder.encode(fname,"UTF-8")
                     +"&&"+URLEncoder.encode("fmobile","UTF-8")+"="+URLEncoder.encode(fmobile,"UTF-8")
                     +"&&"+URLEncoder.encode("fadd","UTF-8")+"="+URLEncoder.encode(fadd,"UTF-8")
                     +"&&"+URLEncoder.encode("fpin","UTF-8")+"="+URLEncoder.encode(fpin,"UTF-8")
@@ -143,7 +142,7 @@ public class createpackage extends AsyncTask<String, Void,String> {
     protected void onPreExecute() {
         progressDialog = new ProgressDialog(context);
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Please wait.......Logging in");
+        progressDialog.setMessage("Please wait.......");
         progressDialog.setMax(100);
         progressDialog.show();
 
