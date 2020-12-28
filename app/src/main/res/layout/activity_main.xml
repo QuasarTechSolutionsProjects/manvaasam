@@ -4,25 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/wallf"
     tools:context=".MainActivity">
+
 
      <androidx.constraintlayout.widget.ConstraintLayout
          android:layout_width="match_parent"
          android:layout_height="match_parent">
 
-         <ImageView
-             android:id="@+id/imageView6"
-             android:layout_width="128dp"
-             android:layout_height="50dp"
-             android:foregroundGravity="left"
-             app:layout_constraintBottom_toBottomOf="parent"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintHorizontal_bias="0.056"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toTopOf="parent"
-             app:layout_constraintVertical_bias="0.023"
-             app:srcCompat="@drawable/manvaslogo" />
+
 
          <TextView
         android:id="@+id/create"
@@ -54,5 +43,32 @@
              app:layout_constraintStart_toStartOf="parent"
              app:layout_constraintTop_toTopOf="parent"
              app:layout_constraintVertical_bias="0.79" />
+
+         <androidx.appcompat.widget.Toolbar
+             android:id="@+id/toolbar"
+             android:layout_width="409dp"
+             android:layout_height="65dp"
+             android:background="#D5D5D5"
+             android:minHeight="?attr/actionBarSize"
+             android:theme="?attr/actionBarTheme"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.666"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent">
+
+             <ImageView
+                 android:id="@+id/imageView6"
+                 android:layout_width="128dp"
+                 android:layout_height="50dp"
+                 android:foregroundGravity="left"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintHorizontal_bias="0.056"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintTop_toTopOf="parent"
+                 app:layout_constraintVertical_bias="0.023"
+                 app:srcCompat="@drawable/manvaslogo" />
+
+         </androidx.appcompat.widget.Toolbar>
      </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

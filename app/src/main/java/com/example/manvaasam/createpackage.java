@@ -44,9 +44,8 @@ public class createpackage extends AsyncTask<String, Void,String> {
         {
             dialog.setMessage("Package Successfully Created");
             dialog.show();
-            Toast.makeText(context.getApplicationContext(), "Package Successfully Created", Toast.LENGTH_SHORT).show();
             Intent intent_name = new Intent();
-            intent_name.setClass(context.getApplicationContext(),MainActivity.class);
+            intent_name.setClass(context.getApplicationContext(),sucess.class);
             context.startActivity(intent_name);
             ((Activity) context).finish();
 
@@ -105,7 +104,7 @@ public class createpackage extends AsyncTask<String, Void,String> {
             OutputStream ops = http.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(ops,"UTF-8"));
             String data = URLEncoder.encode("sid","UTF-8")+"="+URLEncoder.encode(id,"UTF-8")
-                    +"&&"+URLEncoder.encode("fmobile","UTF-8")+"="+URLEncoder.encode(fname,"UTF-8")
+                    +"&&"+URLEncoder.encode("fname","UTF-8")+"="+URLEncoder.encode(fname,"UTF-8")
                     +"&&"+URLEncoder.encode("fmobile","UTF-8")+"="+URLEncoder.encode(fmobile,"UTF-8")
                     +"&&"+URLEncoder.encode("fadd","UTF-8")+"="+URLEncoder.encode(fadd,"UTF-8")
                     +"&&"+URLEncoder.encode("fpin","UTF-8")+"="+URLEncoder.encode(fpin,"UTF-8")
