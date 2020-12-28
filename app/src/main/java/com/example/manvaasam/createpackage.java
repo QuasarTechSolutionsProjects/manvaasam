@@ -32,20 +32,14 @@ public class createpackage extends AsyncTask<String, Void,String> {
 
     }
 
+
     @Override
-    protected void onPreExecute() {
-        progressDialog = ProgressDialog.show(context,
-                "Validating....", null);
-        progressDialog.setCancelable(true);
+    protected void onPostExecute(String s) {
+
+        progressDialog.dismiss();
         dialog = new AlertDialog.Builder(context).create();
         dialog.setTitle("Manvaasam Package");
 
-    }
-    @Override
-    protected void onPostExecute(String s) {
-        if(progressDialog.isShowing()){
-            progressDialog.dismiss();
-        }
         if(s.contains("successfully inserted"))
         {
             dialog.setMessage("Package Successfully Created");
@@ -79,11 +73,6 @@ public class createpackage extends AsyncTask<String, Void,String> {
 
     @Override
     protected String doInBackground(String... voids) {
-        if(progressDialog.isShowing()){
-            progressDialog.dismiss();
-        }
-        msg = "Checking.....";
-        publishProgress(msg);
         String result = "";
         String id = voids[0];
         String fname = voids[1];
@@ -151,9 +140,18 @@ public class createpackage extends AsyncTask<String, Void,String> {
 
         return result;
     }
+    @Override
+    protected void onPreExecute() {
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Please wait.......Logging in");
+        progressDialog.setMax(100);
+        progressDialog.show();
 
-    private void publishProgress(String msg) {
-        progressDialog.setMessage(msg);
+
+
     }
+
+
 }
 

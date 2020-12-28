@@ -31,17 +31,13 @@ public class background extends AsyncTask <String, Void,String> {
 
     }
 
-    @Override
-    protected void onPreExecute() {
-        progressDialog = ProgressDialog.show(context,
-                "Validating....", null);
-        dialog = new AlertDialog.Builder(context).create();
-        dialog.setTitle("Welcome To Manvaasam");
 
-    }
     @Override
     protected void onPostExecute(String s) {
 
+        progressDialog.dismiss();
+        dialog = new AlertDialog.Builder(context).create();
+        dialog.setTitle("Welcome To Manvaasam");
         if(s.contains("successfully login"))
         {
             dialog.setMessage(s);
@@ -70,11 +66,6 @@ public class background extends AsyncTask <String, Void,String> {
 
     @Override
     protected String doInBackground(String... voids) {
-        if(progressDialog.isShowing()){
-            progressDialog.dismiss();
-        }
-        msg = "Please wait logging in";
-        publishProgress(msg);
         String result = "";
         String user = voids[0];
         String pass = voids[1];
@@ -121,9 +112,16 @@ public class background extends AsyncTask <String, Void,String> {
 
         return result;
     }
+    @Override
+    protected void onPreExecute() {
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Please wait.......Working On");
+        progressDialog.setMax(100);
+        progressDialog.show();
 
-    private void publishProgress(String msg) {
-        progressDialog.setMessage(msg);
+
     }
+
     }
 

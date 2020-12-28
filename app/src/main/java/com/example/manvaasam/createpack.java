@@ -47,10 +47,6 @@ public class createpack extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final ProgressDialog progressDialog = new ProgressDialog(createpack.this);
-                progressDialog.setMessage("Validating.....Please wait");
-                progressDialog.setCancelable(false);
-                progressDialog.show();
                 String result = "";
                 String fname = fromname.getText().toString();
                 String fmobile = frommob.getText().toString();
