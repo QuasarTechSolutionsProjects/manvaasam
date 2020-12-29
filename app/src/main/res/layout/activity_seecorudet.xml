@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".seecorudet">
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="409dp"
+                android:layout_height="65dp"
+                android:background="#D5D5D5"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="128dp"
+                    android:layout_height="50dp"
+                    android:foregroundGravity="left"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.056"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.023"
+                    app:srcCompat="@drawable/manvaslogo" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Courier Details"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="21dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="21dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="79dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="75dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="59dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+
+
+            <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pincode"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/pin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="60dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="To"
+                android:textColor="@color/black"
+                android:textSize="21dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/toname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="78dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/tomobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="73dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/toaddr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="59dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pincode"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/topin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="60dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="320dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/scanid"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="#E1E1E1"
+                    android:hint="Enter id (or) open scanner"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:paddingLeft="20sp"
+                    android:paddingRight="10sp"
+                    android:textColor="@color/black"  />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/scan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:background="#6DDD59"
+                    android:text="SCAN"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/submit"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cta_button"
+                    android:text="SUBMIT"
+                    android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:gravity="center"/>
+
+
+                <TextView
+                    android:id="@+id/goback"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cta_button"
+                    android:text="Go Back"
+                    android:textSize="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+    </ScrollView>

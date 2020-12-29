@@ -16,7 +16,9 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name=".trackweb"></activity>
+        <activity android:name=".seecorudet"></activity>
+        <activity android:name=".courtrack" />
+        <activity android:name=".trackweb" />
         <activity android:name=".sucess" />
         <activity android:name=".trackpack" />
         <activity android:name=".createpack" />
