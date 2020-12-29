@@ -78,7 +78,7 @@
                 android:layout_gravity="center"
                 />
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/fromname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
@@ -324,13 +324,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/scan"
+                    android:id="@+id/scanbtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:background="#6DDD59"
                     android:text="SCAN"
                     android:textStyle="bold"/>
+
             </LinearLayout>
 
             <LinearLayout
