@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -42,7 +43,7 @@ public class seecorudet extends AppCompatActivity {
         progressDialog.setMax(100);
         progressDialog.show();
         fname.setText(getIntent().getExtras().getString("fname"));
-        Toast.makeText(seecorudet.this,getIntent().getExtras().getString("fname"),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(seecorudet.this,getIntent().getExtras().getString("fname"),Toast.LENGTH_SHORT).show();
         fmobile.setText(getIntent().getExtras().getString("fmobile"));
         faddr.setText(getIntent().getExtras().getString("faddr"));
         fcode.setText(getIntent().getExtras().getString("fcode"));
@@ -74,9 +75,15 @@ public class seecorudet extends AppCompatActivity {
      submit.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
-            insertcourierid ins = new insertcourierid(seecorudet.this);
-            x = scanid.getText().toString();
-            ins.execute(w,x);
+             x = scanid.getText().toString();
+             if(TextUtils.isEmpty(x)){
+                 scanid.setError("manvaasam id cannot be empty");
+                 scanid.requestFocus();
+             }else{
+                 insertcourierid ins = new insertcourierid(seecorudet.this);
+                 ins.execute(w,x);
+             }
+
          }
      });
 

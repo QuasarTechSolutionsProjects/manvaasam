@@ -3,6 +3,7 @@ package com.example.manvaasam;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,13 +22,14 @@ public class courtrack extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String id = sid.getText().toString();
-                if(id != null && id != ""){
-                    getpackagedetails gpd = new getpackagedetails(courtrack.this);
-                    gpd.execute(id);
+                if(TextUtils.isEmpty(id)){
+                    sid.setError("enter the id");
+                    sid.requestFocus();
 
                 }
                 else{
-                    sid.setError("enter the id");
+                    getpackagedetails gpd = new getpackagedetails(courtrack.this);
+                    gpd.execute(id);
                 }
 
             }

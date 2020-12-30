@@ -80,6 +80,8 @@
                 android:background="#E1E1E1"
                 android:fontFamily="sans-serif"
                 android:hint="Mobile Number"
+                android:inputType="number"
+                android:maxLength="12"
                 android:paddingLeft="20sp"
                 android:paddingRight="10sp"
                 android:textColor="@color/black" />
@@ -114,6 +116,8 @@
                 android:background="#E1E1E1"
                 android:fontFamily="sans-serif"
                 android:hint="pincode"
+                android:maxLength="6"
+                android:inputType="number"
                 android:paddingLeft="20sp"
                 android:paddingRight="10sp"
                 android:textColor="@color/black" />
@@ -157,6 +161,8 @@
                 android:background="#E1E1E1"
                 android:fontFamily="sans-serif"
                 android:hint="Mobile Number"
+                android:maxLength="12"
+                android:inputType="number"
                 android:paddingLeft="20sp"
                 android:paddingRight="10sp"
                 android:textColor="@color/black" />
@@ -191,6 +197,8 @@
                 android:background="#E1E1E1"
                 android:fontFamily="sans-serif"
                 android:hint="Pincode"
+                android:inputType="number"
+                android:maxLength="6"
                 android:paddingLeft="20sp"
                 android:paddingRight="10sp"
                 android:textColor="@color/black" />
@@ -217,6 +225,8 @@
                 android:background="#E1E1E1"
                 android:fontFamily="sans-serif"
                 android:hint="Enter Amount"
+                android:maxLength="6"
+                android:inputType="number"
                 android:paddingLeft="20sp"
                 android:paddingRight="10sp"
                 android:textColor="@color/black" />

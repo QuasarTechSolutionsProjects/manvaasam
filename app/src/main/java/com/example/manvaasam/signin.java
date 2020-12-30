@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,8 +51,20 @@ public class signin extends AppCompatActivity {
                 passwd = pass.getText().toString();
                 check = checkconnection();
                 if(check == Boolean.TRUE){
-                    background bg = new background(signin.this);
-                    bg.execute(user,passwd,value);
+                    if(!TextUtils.isEmpty(user)){
+                        if(!TextUtils.isEmpty(passwd)){
+                            background bg = new background(signin.this);
+                            bg.execute(user,passwd,value);
+                        }
+                        else{
+                            pass.setError("password field cannot be Empty");
+                            pass.requestFocus();
+                        }
+                    }else{
+                        username.setError("Username field cannot be empty");
+                        username.requestFocus();
+                    }
+
                 }
                 else{
                      new AlertDialog.Builder(signin.this)

@@ -2,95 +2,131 @@ package com.example.manvaasam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class trackpack extends AppCompatActivity {
+
+    //the URL having the json data
+    private static final String JSON_URL = "http://192.168.29.180:80/manvaasam/retrieve.php";
+
+    //listview object
     ListView listView;
-    ArrayList arrayList;
+
+    //the package list where we will store all the package objects after parsing json
+    List<packages> packagesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trackpack);
-        listView = (ListView) findViewById(R.id.list_item21);
-        getJSON("http://192.168.29.180:80/manvaasam/packagedet.php");
 
+        //initializing listview and package list
+        listView = (ListView) findViewById(R.id.listView);
+        packagesList = new ArrayList<>();
+
+
+
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                packages packages = packagesList.get(i);
+                Toast.makeText(trackpack.this, packages.getMid(),Toast.LENGTH_LONG).show();
+                trackpackgetdetails tc = new trackpackgetdetails(trackpack.this);
+                tc.execute(packages.getMid());
+            }
+        });
+
+
+
+
+        //this method will fetch and parse the data
+        loadHeroList();
     }
 
-    private void getJSON(final String urlWebService) {
 
-        class GetJSON extends AsyncTask<Void, Void, String> {
+    private void loadHeroList() {
+        //getting the progressbar
+        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
+        //making the progressbar visible
+        progressBar.setVisibility(View.VISIBLE);
+
+        //creating a string request to send request to the url
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, JSON_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //hiding the progressbar after completion
+                        progressBar.setVisibility(View.INVISIBLE);
 
 
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-                try {
-                    loadIntoListView(s);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
+                        try {
+                            //getting the whole json object from the response
+                            JSONObject obj = new JSONObject(response);
 
-            @Override
-            protected String doInBackground(Void... voids) {
-                try {
-                    URL url = new URL(urlWebService);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null) {
-                        sb.append(json + "\n");
+                            //we have the array named hero inside the object
+                            //so here we are getting that json array
+                            JSONArray heroArray = obj.getJSONArray("packages");
+
+                            //now looping through all the elements of the json array
+                            for (int i = 0; i < heroArray.length(); i++) {
+                                //getting the json object of the particular index inside the array
+                                JSONObject heroObject = heroArray.getJSONObject(i);
+
+                                //creating a package object and giving them the values from json object
+                                packages packages = new packages(heroObject.getString("man_id"), heroObject.getString("stc_id"));
+
+                                //adding the package to packageslist
+                                packagesList.add(packages);
+                            }
+
+                            //creating custom adapter object
+                            ListViewAdapter adapter = new ListViewAdapter(packagesList, getApplicationContext());
+
+                            //adding the adapter to listview
+                            listView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    return sb.toString().trim();
-                } catch (Exception e) {
-                    return null;
-                }
-            }
-        }
-        GetJSON getJSON = new GetJSON();
-        getJSON.execute();
-    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //displaying the error in toast if occurrs
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-    private void loadIntoListView(String json) throws JSONException {
-        JSONObject jsonObject = new JSONObject().getJSONObject(json);
-        JSONArray jsonArray = jsonObject.getJSONArray("packagedet");
-        for (int i = 0; i < jsonArray.length(); i++) {
+        //creating a request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-            JSONObject obj = jsonArray.getJSONObject(i);
-            int mid = Integer.parseInt(obj.getString("manid"));
-            String cor = obj.getString("courid");
-            arrayList.add(mid,cor);
-
-        }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        listView.setAdapter(arrayAdapter);
-
-
+        //adding the string request to request queue
+        requestQueue.add(stringRequest);
     }
 }
-
-

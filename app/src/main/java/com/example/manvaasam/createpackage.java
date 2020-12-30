@@ -24,7 +24,7 @@ public class createpackage extends AsyncTask<String, Void,String> {
     AlertDialog dialog;
     Context context;
     ProgressDialog progressDialog;
-    String msg;
+    String msg,id;
     public Boolean login = false;
     public createpackage(Context context)
     {
@@ -40,21 +40,22 @@ public class createpackage extends AsyncTask<String, Void,String> {
         dialog = new AlertDialog.Builder(context).create();
         dialog.setTitle("Manvaasam Package");
 
-        if(s.contains("successfully inserted"))
+        if(s.matches("^[0-9].*"))
         {
             dialog.setMessage("Package Successfully Created");
             dialog.show();
             Intent intent_name = new Intent();
             intent_name.setClass(context.getApplicationContext(),sucess.class);
+            intent_name.putExtra("manid",id);
             context.startActivity(intent_name);
             ((Activity) context).finish();
 
 
         }
-        else if(s.contains("not successfull")){
-            if(progressDialog.isShowing()){
-                progressDialog.dismiss();
-            }
+        else if(s.contains("Enter the values properly")){
+//            if(progressDialog.isShowing()){
+//                progressDialog.dismiss();
+//            }
             dialog.setMessage("Enter the Values correctly");
             dialog.show();
 
@@ -62,8 +63,8 @@ public class createpackage extends AsyncTask<String, Void,String> {
         }
 
         else{
-//            dialog.setMessage(s);
-            dialog.setMessage("Error in Connection please Try after some time Thank you");
+            dialog.setMessage(s);
+            //dialog.setMessage("Error in Connection please Try after some time Thank you");
             dialog.show();
         }
     }
@@ -73,7 +74,7 @@ public class createpackage extends AsyncTask<String, Void,String> {
     @Override
     protected String doInBackground(String... voids) {
         String result = "";
-        String id = voids[0];
+        id = voids[0];
         String fname = voids[1];
         String fmobile = voids[2];
         String fadd = voids[3];
