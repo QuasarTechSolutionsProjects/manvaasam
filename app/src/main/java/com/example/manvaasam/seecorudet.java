@@ -3,6 +3,7 @@ package com.example.manvaasam;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,11 +22,38 @@ public class seecorudet extends AppCompatActivity {
    Button scabtn;
    TextView tv,submit,goback,fname,fmobile,faddr,fcode,tname,tmobile,taddr,tcode;
    TextInputEditText scanid;
-   String w;
+   ProgressDialog progressDialog;
+   String w,x;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seecorudet);
+        fname = (TextView) findViewById(R.id.fromname);
+        fmobile = (TextView) findViewById(R.id.mobile);
+        faddr = (TextView) findViewById(R.id.add);
+        fcode = (TextView) findViewById(R.id.pin);
+        tname = (TextView) findViewById(R.id.toname);
+        tmobile = (TextView) findViewById(R.id.tomobile);
+        taddr = (TextView) findViewById(R.id.toaddr);
+        tcode = (TextView) findViewById(R.id.topin);
+        progressDialog = new ProgressDialog(seecorudet.this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Please wait.......Fetching details");
+        progressDialog.setMax(100);
+        progressDialog.show();
+        fname.setText(getIntent().getExtras().getString("fname"));
+        Toast.makeText(seecorudet.this,getIntent().getExtras().getString("fname"),Toast.LENGTH_SHORT).show();
+        fmobile.setText(getIntent().getExtras().getString("fmobile"));
+        faddr.setText(getIntent().getExtras().getString("faddr"));
+        fcode.setText(getIntent().getExtras().getString("fcode"));
+        tname.setText(getIntent().getExtras().getString("tname"));
+        tmobile.setText(getIntent().getExtras().getString("tmobile"));
+        taddr.setText(getIntent().getExtras().getString("taddr"));
+        tcode.setText(getIntent().getExtras().getString("tcode"));
+        w = getIntent().getExtras().getString("manid");
+        if(progressDialog.isShowing()){
+            progressDialog.dismiss();
+        }
         scabtn = (Button) findViewById(R.id.scanbtn);
         scanid = (TextInputEditText) findViewById(R.id.scanid);
         scabtn.setOnClickListener(new View.OnClickListener() {
@@ -46,17 +74,12 @@ public class seecorudet extends AppCompatActivity {
      submit.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
-
+            insertcourierid ins = new insertcourierid(seecorudet.this);
+            x = scanid.getText().toString();
+            ins.execute(w,x);
          }
      });
-     fname = (TextView) findViewById(R.id.fromname);
-     fmobile = (TextView) findViewById(R.id.mobile);
-     faddr = (TextView) findViewById(R.id.address);
-     fcode = (TextView) findViewById(R.id.pincode);
-     tname = (TextView) findViewById(R.id.toname);
-     tmobile = (TextView) findViewById(R.id.tomobile);
-     taddr = (TextView) findViewById(R.id.toaddr);
-     tcode = (TextView) findViewById(R.id.topin);
+
 
     }
     private void scanCode()
@@ -72,6 +95,7 @@ public class seecorudet extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        x = result.getContents();
         if (result != null) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);

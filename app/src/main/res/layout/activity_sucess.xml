@@ -67,7 +67,7 @@
             app:layout_constraintVertical_bias="0.071" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/pac"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppinsmedium"
@@ -85,6 +85,7 @@
             android:id="@+id/textView9"
             android:layout_width="229dp"
             android:layout_height="48dp"
+            android:layout_marginBottom="72dp"
             android:background="@drawable/cta_button"
             android:fontFamily="@font/poppinsmedium"
             android:gravity="center"

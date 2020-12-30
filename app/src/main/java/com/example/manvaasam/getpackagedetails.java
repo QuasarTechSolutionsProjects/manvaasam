@@ -24,13 +24,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.List;
 
 
 public class getpackagedetails extends AsyncTask<String, Void,String> {
     AlertDialog dialog;
     Context context;
+    String id;
     ProgressDialog progressDialog;
-    String msg,name;
     public Boolean login = false;
     public getpackagedetails(Context context)
     {
@@ -45,9 +46,9 @@ public class getpackagedetails extends AsyncTask<String, Void,String> {
         progressDialog.dismiss();
         dialog = new AlertDialog.Builder(context).create();
         dialog.setTitle("Welcome To Manvaasam");
-        if(s.contains("successfully login"))
+        if(s.contains("incorrect"))
         {
-            dialog.setMessage(s);
+            dialog.setMessage("Id is incorrect");
             dialog.show();
 //            Intent intent_name = new Intent();
 //            intent_name.setClass(context.getApplicationContext(),MainActivity.class);
@@ -56,19 +57,65 @@ public class getpackagedetails extends AsyncTask<String, Void,String> {
 
 
         }
-        else if(s.contains("incorrect id")){
-            dialog.setMessage("Incorrect Id");
-            dialog.show();
 
-        }
 
         else{
+            try {
+                   JSONObject jsonresult = new JSONObject(s);
+                   String fname = jsonresult.getString("fname");
+                   String fmobile = jsonresult.getString("fmobile");
+                   String faddr = jsonresult.getString("faddr");
+                   String fcode = jsonresult.getString("fcode");
+                   String toname = jsonresult.getString("tname");
+                   String tomobile = jsonresult.getString("tmobile");
+                   String taddr = jsonresult.getString("taddr");
+                   String tcode = jsonresult.getString("tcode");
+                   if(fname.contains("false") &&
+                           fmobile.contains("false") &&
+                           faddr.contains("false") &&
+                           fcode.contains("false") &&
+                           toname.contains("false") &&
+                           tomobile.contains("false") ){
+                       dialog.setMessage("Please Enter the Correct Id or Package Already Updated");
+                       dialog.show();
 
-            dialog.setMessage(name);
-            dialog.show();
-            //dialog.setMessage(h);
+                   }
 
-            //dialog.setMessage("Error in Connection please Try after some time Thank you");
+                   else if(
+                           fname != null  &&
+                           fmobile != null &&
+                           faddr !=null &&
+                           fcode != null &&
+                           toname != null &&
+                           tomobile != null &&
+                           taddr != null &&
+                           tcode != null
+                   )
+                   {
+                      Intent intent = new Intent(context.getApplicationContext(),seecorudet.class);
+                      intent.putExtra("fname",fname);
+                       intent.putExtra("fmobile",fmobile);
+                       intent.putExtra("faddr",faddr);
+                       intent.putExtra("fcode",fcode);
+                       intent.putExtra("tname",toname);
+                       intent.putExtra("tmobile",tomobile);
+                       intent.putExtra("taddr",taddr);
+                       intent.putExtra("tcode",tcode);
+                       intent.putExtra("manid",id);
+                       context.startActivity(intent);
+
+                   }
+                   else{
+                       dialog.setMessage("Contact Manvaasam team Fields are Missing");
+                       dialog.show();
+                   }
+
+
+
+            }catch (JSONException e) {
+                e.printStackTrace();
+            }
+
 
         }
     }
@@ -78,7 +125,7 @@ public class getpackagedetails extends AsyncTask<String, Void,String> {
     @Override
     protected String doInBackground(String... voids) {
         String result = "";
-        String id = voids[0];
+        id = voids[0];
 
 
         String connstr = "http://192.168.29.180:80/manvaasam/fetch.php";

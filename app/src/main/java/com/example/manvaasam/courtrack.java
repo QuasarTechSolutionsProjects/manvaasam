@@ -21,8 +21,15 @@ public class courtrack extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String id = sid.getText().toString();
-                getpackagedetails gpd = new getpackagedetails(courtrack.this);
-                gpd.execute(id);
+                if(id != null && id != ""){
+                    getpackagedetails gpd = new getpackagedetails(courtrack.this);
+                    gpd.execute(id);
+
+                }
+                else{
+                    sid.setError("enter the id");
+                }
+
             }
         });
 
