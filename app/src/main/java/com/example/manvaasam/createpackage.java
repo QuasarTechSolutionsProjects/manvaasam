@@ -42,20 +42,15 @@ public class createpackage extends AsyncTask<String, Void,String> {
 
         if(s.matches("^[0-9].*"))
         {
-            dialog.setMessage("Package Successfully Created");
-            dialog.show();
             Intent intent_name = new Intent();
             intent_name.setClass(context.getApplicationContext(),sucess.class);
-            intent_name.putExtra("manid",id);
+            intent_name.putExtra("manid",s);
             context.startActivity(intent_name);
             ((Activity) context).finish();
 
 
         }
         else if(s.contains("Enter the values properly")){
-//            if(progressDialog.isShowing()){
-//                progressDialog.dismiss();
-//            }
             dialog.setMessage("Enter the Values correctly");
             dialog.show();
 
@@ -63,8 +58,8 @@ public class createpackage extends AsyncTask<String, Void,String> {
         }
 
         else{
-            dialog.setMessage(s);
-            //dialog.setMessage("Error in Connection please Try after some time Thank you");
+           //dialog.setMessage(s);
+            dialog.setMessage("Error in Connection please Try after some time Thank you");
             dialog.show();
         }
     }

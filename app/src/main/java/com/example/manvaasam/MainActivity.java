@@ -9,13 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    TextView img1,img2;
+    TextView img1,img2,img3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         img1 = (TextView) findViewById(R.id.create);
         img2 = (TextView) findViewById(R.id.track);
+        img3 = (TextView) findViewById(R.id.search);
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,trackpack.class);
                 startActivity(intent);
+            }
+        });
+        img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             startActivity(new Intent(MainActivity.this,searchact.class));
             }
         });
 

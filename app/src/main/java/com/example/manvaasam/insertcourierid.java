@@ -51,7 +51,7 @@ public class insertcourierid extends AsyncTask<String, Void,String> {
 //            dialog.setMessage(s);
 //            dialog.show();
             Intent intent_name = new Intent();
-            intent_name.setClass(context.getApplicationContext(),sucess.class);
+            intent_name.setClass(context.getApplicationContext(),coursuccess.class);
             intent_name.putExtra("manid",id);
             context.startActivity(intent_name);
             ((Activity) context).finish();

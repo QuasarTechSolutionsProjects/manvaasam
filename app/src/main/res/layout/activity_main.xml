@@ -15,7 +15,7 @@
 
          <TextView
         android:id="@+id/create"
-        android:layout_width="361dp"
+        android:layout_width="290dp"
         android:layout_height="52dp"
         android:background="@drawable/cta_button"
         android:gravity="center"
@@ -31,7 +31,7 @@
 
          <TextView
              android:id="@+id/track"
-             android:layout_width="361dp"
+             android:layout_width="290dp"
              android:layout_height="52dp"
              android:background="@drawable/cta_button"
              android:gravity="center"
@@ -70,5 +70,19 @@
                  app:srcCompat="@drawable/manvaslogo" />
 
          </androidx.appcompat.widget.Toolbar>
+
+         <TextView
+             android:id="@+id/search"
+             android:layout_width="290dp"
+             android:layout_height="52dp"
+             android:text="Search Package"
+             android:textColor="#FFFFFF"
+             android:textSize="25sp"
+             android:gravity="center"
+             android:background="@drawable/cta_button"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/track" />
      </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

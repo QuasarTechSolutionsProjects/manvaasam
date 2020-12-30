@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:scrollbars="vertical"
+    android:scrollbarStyle="insideOverlay">
 
 
     <ImageView
@@ -31,7 +33,5 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textSize="17sp"
         />
-
-
 
 </LinearLayout>
