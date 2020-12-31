@@ -24,8 +24,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 
 public class searchpackt extends AppCompatActivity {
@@ -80,7 +90,7 @@ public class searchpackt extends AppCompatActivity {
 
 
     private void loadHeroList(String mid) {
-        JSON_URL = new StringBuilder().append("http://192.168.29.180/manvaasam/search.php?searchid=").append(mid).toString();
+        JSON_URL = new StringBuilder().append("https://quasartechsolutions.in/manvaasam/search.php?searchid=").append(mid).toString();
         //JSON_URL = "http://192.168.29.180:80/manvaasam/search.php?searchid=31122020";
         //JSON_URL = "http://192.168.0.5/manvaasam/search.php?searchid="+mid; -> Work on this if the above URL not working
         //getting the progressbar
@@ -142,7 +152,35 @@ public class searchpackt extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
+        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return null;
+            }
+            public void checkClientTrusted(X509Certificate[] certs, String authType) {
+            }
+            public void checkServerTrusted(X509Certificate[] certs, String authType) {
+            }
+        } };
+        SSLContext sc = null;
+        try {
+            sc = SSLContext.getInstance("SSL");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        try {
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+        // Create all-trusting host name verifier
+        HostnameVerifier allHostsValid = new HostnameVerifier() {
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        };
+        // Install the all-trusting host verifier
+        HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
         //creating a request queue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 

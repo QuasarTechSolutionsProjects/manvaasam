@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -32,7 +33,7 @@ import java.net.URLEncoder;
 
 public class signin extends AppCompatActivity {
    EditText username,pass;
-   ImageView signbut;
+   ImageView signbut,quasar;
    String user,passwd;
    String value;
    Boolean check;
@@ -43,6 +44,13 @@ public class signin extends AppCompatActivity {
         value = getIntent().getExtras().getString("choice");
         username = (EditText) findViewById(R.id.username);
         pass  = (EditText) findViewById(R.id.password);
+        quasar = (ImageView) findViewById(R.id.quasartech1);
+        quasar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(signin.this,quasartechweb.class));
+            }
+        });
         signbut = (ImageView) findViewById(R.id.signinbut);
         signbut.setOnClickListener(new View.OnClickListener() {
             @Override

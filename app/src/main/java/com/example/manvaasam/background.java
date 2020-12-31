@@ -17,6 +17,16 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 
 public class background extends AsyncTask <String, Void,String> {
@@ -38,7 +48,7 @@ public class background extends AsyncTask <String, Void,String> {
         progressDialog.dismiss();
         dialog = new AlertDialog.Builder(context).create();
         dialog.setTitle("Welcome To Manvaasam");
-        if(s.contains("successfully login"))
+        if(s.contains("Successfull Login"))
         {
             dialog.setMessage(s);
             dialog.show();
@@ -56,8 +66,8 @@ public class background extends AsyncTask <String, Void,String> {
                   }
 
         else{
-//            dialog.setMessage(s);
-           dialog.setMessage("Error in Connection please Try after some time Thank you");
+          dialog.setMessage(s);
+          // dialog.setMessage("Error in Connection please Try after some time Thank you");
            dialog.show();
         }
     }
@@ -71,7 +81,36 @@ public class background extends AsyncTask <String, Void,String> {
         String pass = voids[1];
         String choice = voids[2];
 
-        String connstr = "http://192.168.29.180:80/manvaasam/login.php";
+        String connstr = "https://www.quasartechsolutions.in/manvaasam/login.php";
+        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return null;
+            }
+            public void checkClientTrusted(X509Certificate[] certs, String authType) {
+            }
+            public void checkServerTrusted(X509Certificate[] certs, String authType) {
+            }
+        } };
+        SSLContext sc = null;
+        try {
+            sc = SSLContext.getInstance("SSL");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        try {
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+        // Create all-trusting host name verifier
+        HostnameVerifier allHostsValid = new HostnameVerifier() {
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        };
+        // Install the all-trusting host verifier
+        HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
 
         try {
             URL url = new URL(connstr);
@@ -102,6 +141,7 @@ public class background extends AsyncTask <String, Void,String> {
             ips.close();
             http.disconnect();
             return result;
+
 
         } catch (MalformedURLException e) {
             result = e.getMessage();

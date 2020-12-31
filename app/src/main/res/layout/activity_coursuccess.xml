@@ -82,7 +82,7 @@
             app:layout_constraintVertical_bias="0.088" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/gohome"
             android:layout_width="229dp"
             android:layout_height="48dp"
             android:layout_marginBottom="72dp"
