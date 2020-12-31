@@ -18,11 +18,12 @@ public class searchact extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchact);
         tx1=(TextInputEditText) findViewById(R.id.sid);
-        mid=tx1.getText().toString();
+        
         flobar = (FloatingActionButton) findViewById(R.id.fbar);
         flobar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mid=tx1.getText().toString();
                 Intent i = new Intent(searchact.this, searchpackt.class);
                 i.putExtra("M_id",mid);
                 startActivity(i);
