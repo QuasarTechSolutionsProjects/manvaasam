@@ -75,13 +75,14 @@ public class searchpackt extends AppCompatActivity {
 
 
         //this method will fetch and parse the data
-        loadHeroList();
+        loadHeroList(MANV_ID);
     }
 
 
-    private void loadHeroList() {
-        JSON_URL = new StringBuilder().append("http://192.168.29.180/manvaasam/search.php?searchid=").append(MANV_ID).toString();
+    private void loadHeroList(String mid) {
+        JSON_URL = new StringBuilder().append("http://192.168.29.180/manvaasam/search.php?searchid=").append(mid).toString();
         //JSON_URL = "http://192.168.29.180:80/manvaasam/search.php?searchid=31122020";
+        //JSON_URL = "http://192.168.0.5/manvaasam/search.php?searchid="+mid; -> Work on this if the above URL not working
         //getting the progressbar
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -89,7 +90,7 @@ public class searchpackt extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         //creating a string request to send request to the url
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, JSON_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, JSON_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
