@@ -31,14 +31,15 @@ import java.util.List;
 public class searchpackt extends AppCompatActivity {
 
 
-    Intent intent = getIntent();
-    String MANV_ID = intent.getStringExtra("MYM_id_KEY");
+//    Intent intent = getIntent();
+//    String MANV_ID = intent.getStringExtra("M_id");
 
     //the URL having the json data
-    private static final String JSON_URL = new StringBuilder().append("http://192.168.29.180:80/manvaasam/search.php?searchid=".append(MANV_ID).toString();
+    private static String JSON_URL;
 
     //listview object
     ListView listView;
+    String MANV_ID;
 
     //the package list where we will store all the package objects after parsing json
     List<packages> packagesList;
@@ -47,6 +48,10 @@ public class searchpackt extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trackpack);
+        Intent intent = getIntent();
+        MANV_ID = intent.getStringExtra("M_id");
+
+
 
         //initializing listview and package list
         listView = (ListView) findViewById(R.id.listView);
@@ -60,8 +65,8 @@ public class searchpackt extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 packages packages = packagesList.get(i);
-                Toast.makeText(trackpack.this, packages.getMid(),Toast.LENGTH_LONG).show();
-                trackpackgetdetails tc = new trackpackgetdetails(trackpack.this);
+                Toast.makeText(searchpackt.this, packages.getMid(),Toast.LENGTH_LONG).show();
+                trackpackgetdetails tc = new trackpackgetdetails(searchpackt.this);
                 tc.execute(packages.getMid());
             }
         });
@@ -75,6 +80,8 @@ public class searchpackt extends AppCompatActivity {
 
 
     private void loadHeroList() {
+        JSON_URL = new StringBuilder().append("http://192.168.29.180/manvaasam/search.php?searchid=").append(MANV_ID).toString();
+        //JSON_URL = "http://192.168.29.180:80/manvaasam/search.php?searchid=31122020";
         //getting the progressbar
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
@@ -91,6 +98,12 @@ public class searchpackt extends AppCompatActivity {
 
 
                         try {
+
+                            if(response.contains("No records Found")){
+                                Toast.makeText(searchpackt.this,"Records not found",Toast.LENGTH_SHORT).show();
+
+                            }
+                            Toast.makeText(searchpackt.this,response,Toast.LENGTH_SHORT).show();
                             //getting the whole json object from the response
                             JSONObject obj = new JSONObject(response);
 

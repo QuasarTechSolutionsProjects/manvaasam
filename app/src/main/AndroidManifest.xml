@@ -35,6 +35,7 @@
         <activity android:name=".trackpack" />
         <activity android:name=".createpack" />
         <activity android:name=".signin" />
+        <activity android:name=".searchpackt"/>
         <activity android:name=".login_screen" />
         <activity android:name=".splash_screen">
             <intent-filter>
