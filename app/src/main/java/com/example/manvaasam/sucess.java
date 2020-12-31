@@ -16,13 +16,14 @@ import android.widget.Toast;
 
 public class sucess extends AppCompatActivity {
    TextView pac;
+   String manid;
     private static final int PERMISSION_STORAGE_CODE=1000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sucess);
         pac = (TextView) findViewById(R.id.pac);
-        String manid = getIntent().getExtras().getString("manid");
+        manid = getIntent().getExtras().getString("manid");
         if (manid != null){
             pac.setText("Package ID: "+manid);
         }
@@ -46,12 +47,12 @@ public class sucess extends AppCompatActivity {
 
     private void startDownloading()
     {
-        String MANVAASAMID="28122020MAN1";
-        String URL = new StringBuilder().append("http://192.168.29.180/manvaasam/invoice.php?manid=").append(MANVAASAMID).toString();
+        //String MANVAASAMID="28122020MAN1";
+        String URL = new StringBuilder().append("http://192.168.29.180/manvaasam/invoice.php?manid=").append(manid).toString();
 
         DownloadManager.Request request=new DownloadManager.Request(Uri.parse(URL));
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-        request.setTitle("Invoice"+MANVAASAMID);
+        request.setTitle("Invoice"+manid);
         request.setDescription("Downloading Invoice..");
 
 //      request.allowScanningByMediaScanner();

@@ -2,7 +2,9 @@ package com.example.manvaasam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,6 +22,15 @@ public class searchact extends AppCompatActivity {
         flobar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String id  = tx1.getText().toString();
+                if(!TextUtils.isEmpty(id)){
+                    Intent intent = new Intent(searchact.this,searchback.class);
+                    intent.putExtra("manid",id);
+                    startActivity(intent);
+                }else{
+                    tx1.setError("Searh Id should not be empty");
+                    tx1.requestFocus();
+                }
 
             }
         });
