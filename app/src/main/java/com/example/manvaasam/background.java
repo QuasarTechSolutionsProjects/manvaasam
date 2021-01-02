@@ -103,6 +103,9 @@ public class background extends AsyncTask <String, Void,String> {
                 .build();
         StrictMode.setThreadPolicy(policy);
         String connstr = "https://www.quasartechsolutions.in/manvaasam/login.php";
+
+        // Code to Trust and Allow All SSL Certificates
+        
         TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
             public java.security.cert.X509Certificate[] getAcceptedIssuers() {
                 return null;

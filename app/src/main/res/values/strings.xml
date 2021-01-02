@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">manvaasam</string>
+    <string name="app_name">Manvaasam Logistics</string>
     <string name="title_activity_team_home">team_home</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
