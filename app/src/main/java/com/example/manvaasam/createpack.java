@@ -66,7 +66,7 @@ public class createpack extends AppCompatActivity {
                 if(!TextUtils.isEmpty(fname)){
                     if((!TextUtils.isEmpty(fmobile)) && (fmobile.length() <= 12)  ){
                         if (!TextUtils.isEmpty(fadd)){
-                            if(!TextUtils.isEmpty(fpin) && ( fp == 6 || fp <= 6 || fp > 0) ){
+                            if(!TextUtils.isEmpty(fpin) &&  fp == 6  ){
                                 if(!TextUtils.isEmpty(tname)){
                                     if ((!TextUtils.isEmpty(tmobile)) && (fmobile.length() <= 12) ){
                                         if(!TextUtils.isEmpty(tadd)){

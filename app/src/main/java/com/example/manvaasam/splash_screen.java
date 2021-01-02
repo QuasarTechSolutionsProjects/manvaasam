@@ -37,9 +37,11 @@ public class splash_screen extends AppCompatActivity {
                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                        @Override
                        public void onClick(DialogInterface dialogInterface, int i) {
-                          Intent intent = new Intent(splash_screen.this,splash_screen.class);
-                          startActivity(intent);
-                          finish();
+//                          Intent intent = new Intent(splash_screen.this,splash_screen.class);
+//                          startActivity(intent);
+//                          finish();
+                           System.exit(0);
+                           finish();
                        }
                    })
                    .show();

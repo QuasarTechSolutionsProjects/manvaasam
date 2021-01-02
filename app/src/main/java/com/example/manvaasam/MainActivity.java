@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     TextView img1,img2,img3;
+    Button logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +19,14 @@ public class MainActivity extends AppCompatActivity {
         img1 = (TextView) findViewById(R.id.create);
         img2 = (TextView) findViewById(R.id.track);
         img3 = (TextView) findViewById(R.id.search);
+        logout = (Button) findViewById(R.id.button);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,login_screen.class));
+                finish();
+            }
+        });
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -45,6 +45,10 @@ public class sucess extends AppCompatActivity {
                 finish();
             }
         });
+        manid = getIntent().getExtras().getString("manid");
+        if (manid != null){
+            pac.setText("Package ID: "+manid);
+        }
         invoice = (TextView) findViewById(R.id.invoice);
         invoice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,61 +62,58 @@ public class sucess extends AppCompatActivity {
                     }
                     else
                     {
-                        startDownloading();
+                        startDownloading(manid);
                     }
                 }
                 else
                 {
-                    startDownloading();
+                    startDownloading(manid);
                 }
 
             }
         });
-        manid = getIntent().getExtras().getString("manid");
-        if (manid != null){
-            pac.setText("Package ID: "+manid);
-        }
+
 
     }
 
-    private void startDownloading()
+    private void startDownloading(String manid)
     {
         //String MANVAASAMID="28122020MAN1";
         String URL = new StringBuilder().append("https://quasartechsolutions.in/manvaasam/invoice.php?manid=").append(manid).toString();
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .build();
-        StrictMode.setThreadPolicy(policy);
-        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
-            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                return null;
-            }
-            public void checkClientTrusted(X509Certificate[] certs, String authType) {
-            }
-            public void checkServerTrusted(X509Certificate[] certs, String authType) {
-            }
-        } };
-        SSLContext sc = null;
-        try {
-            sc = SSLContext.getInstance("SSL");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        try {
-            sc.init(null, trustAllCerts, new java.security.SecureRandom());
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-        }
-        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
-        // Create all-trusting host name verifier
-        HostnameVerifier allHostsValid = new HostnameVerifier() {
-            public boolean verify(String hostname, SSLSession session) {
-                return true;
-            }
-        };
-        // Install the all-trusting host verifier
-        HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+//                .detectAll()
+//                .penaltyLog()
+//                .build();
+//        StrictMode.setThreadPolicy(policy);
+//        TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+//            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+//                return null;
+//            }
+//            public void checkClientTrusted(X509Certificate[] certs, String authType) {
+//            }
+//            public void checkServerTrusted(X509Certificate[] certs, String authType) {
+//            }
+//        } };
+//        SSLContext sc = null;
+//        try {
+//            sc = SSLContext.getInstance("SSL");
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+//        } catch (KeyManagementException e) {
+//            e.printStackTrace();
+//        }
+//        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+//        // Create all-trusting host name verifier
+//        HostnameVerifier allHostsValid = new HostnameVerifier() {
+//            public boolean verify(String hostname, SSLSession session) {
+//                return true;
+//            }
+//        };
+//        // Install the all-trusting host verifier
+//        HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
 
         DownloadManager.Request request=new DownloadManager.Request(Uri.parse(URL));
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
@@ -136,7 +137,7 @@ public class sucess extends AppCompatActivity {
             case PERMISSION_STORAGE_CODE:
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                 {
-                    startDownloading();
+                    startDownloading(manid);
                 }
                 else
                 {

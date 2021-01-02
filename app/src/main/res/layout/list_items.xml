@@ -7,20 +7,21 @@
     android:scrollbarStyle="insideOverlay">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/logo"
-        android:paddingTop="15dp"
-        android:paddingLeft="15dp"
-        android:contentDescription="image view" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:src="@drawable/logo"-->
+<!--        android:paddingTop="15dp"-->
+<!--        android:paddingLeft="15dp"-->
+<!--        android:contentDescription="image view" />-->
 
     <TextView
         android:id="@+id/manvid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="15dp"
+        android:fontFamily="@font/poppinsmedium"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textSize="17sp"
         />
@@ -30,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="15dp"
+        android:fontFamily="@font/poppinsmedium"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textSize="17sp"
         />
