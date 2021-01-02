@@ -16,6 +16,12 @@ public class coursuccess extends AppCompatActivity {
         setContentView(R.layout.activity_coursuccess);
         pac = (TextView) findViewById(R.id.pac);
         String manid = getIntent().getExtras().getString("manid");
+        if(manid != null){
+            pac.setText("Package ID : "+manid);
+        }
+        else{
+            pac.setVisibility(View.INVISIBLE);
+        }
         gohome = (TextView) findViewById(R.id.gohome);
         gohome.setOnClickListener(new View.OnClickListener() {
             @Override
