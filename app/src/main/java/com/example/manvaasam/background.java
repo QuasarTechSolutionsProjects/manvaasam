@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -33,7 +34,8 @@ public class background extends AsyncTask <String, Void,String> {
     AlertDialog dialog;
     Context context;
     ProgressDialog progressDialog;
-    String msg;
+    String choice;
+    int value;
     public Boolean login = false;
     public background(Context context)
     {
@@ -48,14 +50,29 @@ public class background extends AsyncTask <String, Void,String> {
         progressDialog.dismiss();
         dialog = new AlertDialog.Builder(context).create();
         dialog.setTitle("Welcome To Manvaasam");
+        value = Integer.parseInt(choice);
         if(s.contains("Successfull Login"))
         {
-            dialog.setMessage(s);
-            dialog.show();
-            Intent intent_name = new Intent();
-            intent_name.setClass(context.getApplicationContext(),MainActivity.class);
-            context.startActivity(intent_name);
-            ((Activity) context).finish();
+            if(choice.contains("98765")){
+                Intent intent_name = new Intent();
+                intent_name.setClass(context.getApplicationContext(),courtrack.class);
+                context.startActivity(intent_name);
+                ((Activity) context).finish();
+
+            }
+            else if(choice.contains("12345") ){
+                Intent intent_name = new Intent();
+                intent_name.setClass(context.getApplicationContext(),MainActivity.class);
+                context.startActivity(intent_name);
+                ((Activity) context).finish();
+
+            }
+            else{
+                //dialog.setMessage("Please try again.....");
+                dialog.setMessage(choice);
+                dialog.show();
+            }
+
 
 
         }
@@ -79,8 +96,12 @@ public class background extends AsyncTask <String, Void,String> {
         String result = "";
         String user = voids[0];
         String pass = voids[1];
-        String choice = voids[2];
-
+        choice = voids[2];
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .build();
+        StrictMode.setThreadPolicy(policy);
         String connstr = "https://www.quasartechsolutions.in/manvaasam/login.php";
         TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
             public java.security.cert.X509Certificate[] getAcceptedIssuers() {

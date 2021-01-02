@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -91,6 +92,11 @@ public class createpackage extends AsyncTask<String, Void,String> {
         String amt = voids[9];
 
         String connstr = "https://quasartechsolutions.in/manvaasam/create.php";
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .build();
+        StrictMode.setThreadPolicy(policy);
         TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
             public java.security.cert.X509Certificate[] getAcceptedIssuers() {
                 return null;

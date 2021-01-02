@@ -3,6 +3,7 @@ package com.example.manvaasam;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -50,6 +51,11 @@ public class searchback extends AppCompatActivity {
         setContentView(R.layout.activity_searchback);
         manid = getIntent().getExtras().getString("manid");
         JSON_URL = "https://quasartechsolutions.in/manvaasam/search.php?manid="+manid;
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .build();
+        StrictMode.setThreadPolicy(policy);
         TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
             public java.security.cert.X509Certificate[] getAcceptedIssuers() {
                 return null;

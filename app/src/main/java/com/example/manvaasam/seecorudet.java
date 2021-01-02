@@ -89,6 +89,14 @@ public class seecorudet extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(seecorudet.this,courtrack.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void scanCode()
     {
         IntentIntegrator integrator=new IntentIntegrator(this);

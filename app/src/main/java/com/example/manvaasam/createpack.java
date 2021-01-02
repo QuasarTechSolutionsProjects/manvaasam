@@ -70,7 +70,7 @@ public class createpack extends AppCompatActivity {
                                 if(!TextUtils.isEmpty(tname)){
                                     if ((!TextUtils.isEmpty(tmobile)) && (fmobile.length() <= 12) ){
                                         if(!TextUtils.isEmpty(tadd)){
-                                            if ((!TextUtils.isEmpty(tpin)) && ( tp == 6 || tp <= 6 || tp > 0)){
+                                            if (!TextUtils.isEmpty(tpin) &&  tp == 6 ){
                                                 if(!TextUtils.isEmpty(amt)){
                                                     createpackage cr = new createpackage(createpack.this);
                                                     cr.execute(id, fname, fmobile, fadd, fpin, tname, tmobile, tadd, tpin, amt);

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -91,9 +92,11 @@ public class searchpackt extends AppCompatActivity {
 
     private void loadHeroList(String mid) {
         JSON_URL = new StringBuilder().append("https://quasartechsolutions.in/manvaasam/search.php?searchid=").append(mid).toString();
-        //JSON_URL = "http://192.168.29.180:80/manvaasam/search.php?searchid=31122020";
-        //JSON_URL = "http://192.168.0.5/manvaasam/search.php?searchid="+mid; -> Work on this if the above URL not working
-        //getting the progressbar
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .build();
+        StrictMode.setThreadPolicy(policy);
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         //making the progressbar visible

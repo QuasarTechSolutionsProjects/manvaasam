@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 public class sucess extends AppCompatActivity {
-   TextView pac,gohome;
+   TextView pac,gohome,invoice;
    String manid;
     private static final int PERMISSION_STORAGE_CODE=1000;
     @Override
@@ -44,32 +45,45 @@ public class sucess extends AppCompatActivity {
                 finish();
             }
         });
+        invoice = (TextView) findViewById(R.id.invoice);
+        invoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                {
+                    if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+                    {
+                        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        requestPermissions(permissions,PERMISSION_STORAGE_CODE);
+                    }
+                    else
+                    {
+                        startDownloading();
+                    }
+                }
+                else
+                {
+                    startDownloading();
+                }
+
+            }
+        });
         manid = getIntent().getExtras().getString("manid");
         if (manid != null){
             pac.setText("Package ID: "+manid);
         }
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-        {
-            if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
-            {
-                String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                requestPermissions(permissions,PERMISSION_STORAGE_CODE);
-            }
-            else
-            {
-                startDownloading();
-            }
-        }
-        else
-        {
-            startDownloading();
-        }
+
     }
 
     private void startDownloading()
     {
         //String MANVAASAMID="28122020MAN1";
         String URL = new StringBuilder().append("https://quasartechsolutions.in/manvaasam/invoice.php?manid=").append(manid).toString();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .build();
+        StrictMode.setThreadPolicy(policy);
         TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
             public java.security.cert.X509Certificate[] getAcceptedIssuers() {
                 return null;

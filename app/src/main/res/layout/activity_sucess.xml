@@ -85,17 +85,32 @@
             android:id="@+id/gohome"
             android:layout_width="229dp"
             android:layout_height="48dp"
-            android:layout_marginBottom="72dp"
+            android:layout_marginBottom="36dp"
             android:background="@drawable/cta_button"
             android:fontFamily="@font/poppinsmedium"
             android:gravity="center"
             android:text="Go Home"
             android:textColor="@color/white"
             android:textSize="22dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/invoice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/invoice"
+            android:layout_width="229dp"
+            android:layout_height="48dp"
+            android:background="@drawable/cta_button"
+            android:text="Print Invoice"
+            android:textSize="24dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppinsmedium"
+            android:gravity="center"
+            android:layout_marginBottom="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
