@@ -340,7 +340,7 @@
                 android:id="@+id/submit"
                 android:layout_width="190dp"
                 android:layout_height="40dp"
-                android:background="@drawable/cta_button"
+                android:background="@drawable/cta_button2"
                 android:text="COPY ID &amp; TRACK"
                 android:textSize="18dp"
                 android:textColor="@color/white"

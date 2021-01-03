@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -64,16 +65,33 @@ public class createpack extends AppCompatActivity {
                 String amt = amountt.getText().toString();
                 String id = "12345";
                 if(!TextUtils.isEmpty(fname)){
-                    if((!TextUtils.isEmpty(fmobile)) && (fmobile.length() <= 12)  ){
+                    if((!TextUtils.isEmpty(fmobile)) && ((fmobile.length() == 10) || (fmobile.length() > 10))  ){
                         if (!TextUtils.isEmpty(fadd)){
                             if(!TextUtils.isEmpty(fpin) &&  fp == 6  ){
                                 if(!TextUtils.isEmpty(tname)){
-                                    if ((!TextUtils.isEmpty(tmobile)) && (fmobile.length() <= 12) ){
+                                    if ((!TextUtils.isEmpty(tmobile)) && ((tmobile.length() == 10) || (tmobile.length() > 10 )) ){
                                         if(!TextUtils.isEmpty(tadd)){
                                             if (!TextUtils.isEmpty(tpin) &&  tp == 6 ){
                                                 if(!TextUtils.isEmpty(amt)){
-                                                    createpackage cr = new createpackage(createpack.this);
-                                                    cr.execute(id, fname, fmobile, fadd, fpin, tname, tmobile, tadd, tpin, amt);
+                                                    androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(createpack.this);
+                                                    builder.setMessage("Please Confirm before proceed");
+                                                    builder.setTitle("Confirmation");
+                                                    builder.setPositiveButton("Check Again", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                        }
+                                                    }).setNegativeButton("Confirm and Proceed", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                                            createpackage cr = new createpackage(createpack.this);
+                                                            cr.execute(id, fname, fmobile, fadd, fpin, tname, tmobile, tadd, tpin, amt);
+
+                                                        }
+                                                    });
+                                                    androidx.appcompat.app.AlertDialog dialog = builder.create();
+                                                    dialog.show();
+
                                                 }
                                                 else{
                                                     amountt.setError("Amount should not be empty");

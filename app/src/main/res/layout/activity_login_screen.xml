@@ -27,7 +27,7 @@
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:text="MANVAASAM"
-        android:textColor="#FCFFFD"
+        android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"

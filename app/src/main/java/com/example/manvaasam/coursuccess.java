@@ -31,4 +31,10 @@ public class coursuccess extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(coursuccess.this,courtrack.class));
+        finish();
+    }
 }

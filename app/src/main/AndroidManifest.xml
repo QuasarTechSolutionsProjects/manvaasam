@@ -20,33 +20,47 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name=".quasartechweb"></activity>
-        <activity android:name=".searchback" />
-        <activity android:name=".searchact" />
-        <activity android:name=".coursuccess" />
-        <activity android:name=".adminseepackdet" />
+        <activity android:name=".quasartechweb"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".searchact"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".coursuccess"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".adminseepackdet"
+                android:screenOrientation="portrait"/>
         <activity
             android:name=".CaptureAct"
             android:screenOrientation="fullSensor"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".seecorudet" />
-        <activity android:name=".courtrack" />
-        <activity android:name=".trackweb" />
-        <activity android:name=".sucess" />
-        <activity android:name=".trackpack" />
-        <activity android:name=".createpack" />
-        <activity android:name=".signin" />
-        <activity android:name=".searchpackt" />
-        <activity android:name=".login_screen" />
-        <activity android:name=".splash_screen">
+        <activity android:name=".seecorudet"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".courtrack"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".trackweb"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".sucess"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".trackpack"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".createpack"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".signin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".searchpackt"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".login_screen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".splash_screen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
