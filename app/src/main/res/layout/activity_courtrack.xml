@@ -37,6 +37,19 @@
             app:layout_constraintVertical_bias="0.023"
             app:srcCompat="@drawable/manvaslogo" />
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="676dp"
+            android:background="#8FEA33"
+            android:fadingEdgeLength="40dp"
+            android:text="Logout"
+            android:textSize="13dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="20dp"/>
+
 
     </androidx.appcompat.widget.Toolbar>
 

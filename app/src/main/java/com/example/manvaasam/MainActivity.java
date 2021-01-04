@@ -3,6 +3,7 @@ package com.example.manvaasam;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String emptyuser = "";
+                String emptypass = "";
+                SharedPreferences preferences = getSharedPreferences("logindetails",MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("usernameee",emptyuser);
+                editor.putString("password",emptypass);
+                editor.apply();
                 startActivity(new Intent(MainActivity.this,login_screen.class));
                 finish();
             }
