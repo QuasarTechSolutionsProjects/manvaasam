@@ -26,12 +26,13 @@ public class courtrack extends AppCompatActivity {
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emptyuser = " ";
-                String emptypass = " ";
+                String emptyuser = null;
+                String emptypass = null;
                 SharedPreferences preferences = getSharedPreferences("logindetails",MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("usernameee",emptyuser);
                 editor.putString("password",emptypass);
+                editor.putString("type",emptypass);
                 editor.apply();
                 startActivity(new Intent(courtrack.this,login_screen.class));
                 finish();

@@ -31,15 +31,27 @@ public class splash_screen extends AppCompatActivity {
                 String usernamee = preferences.getString("usernameee","");
                 String password =  preferences.getString("password","");
                 String type = preferences.getString("type","");
-                if(!TextUtils.isEmpty(usernamee) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(type) ){
-//                    Toast.makeText(splash_screen.this,"Welcome Back" ,Toast.LENGTH_SHORT).show();
+                if(
+                                        !TextUtils.isEmpty(usernamee) &&
+                                        !TextUtils.isEmpty(password) &&
+                                        !TextUtils.isEmpty(type) &&
+                                        usernamee.length() > 0 &&
+                                        password.length() > 0 &&
+                                                type.length() > 0 &&
+                                                usernamee != null &&
+                                                password != null &&
+                                                type != null
+                ){
+                    //Toast.makeText(splash_screen.this,usernamee + "\n" + password + "\n" + type ,Toast.LENGTH_SHORT).show();
                     background bg = new background(splash_screen.this);
                     bg.execute(usernamee,password,type);
                 }
                 else {
+
                     Intent intent = new Intent(splash_screen.this, login_screen.class);
                     startActivity(intent);
                     finish();
+
                 }
             }
         },3000);

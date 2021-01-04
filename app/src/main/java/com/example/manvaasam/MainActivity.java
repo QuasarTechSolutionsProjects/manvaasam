@@ -29,12 +29,13 @@ public class MainActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emptyuser = "";
-                String emptypass = "";
+                String emptyuser = null;
+                String emptypass = null;
                 SharedPreferences preferences = getSharedPreferences("logindetails",MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString("usernameee",emptyuser);
                 editor.putString("password",emptypass);
+                editor.putString("type",emptypass);
                 editor.apply();
                 startActivity(new Intent(MainActivity.this,login_screen.class));
                 finish();

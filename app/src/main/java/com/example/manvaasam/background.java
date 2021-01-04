@@ -50,7 +50,6 @@ public class background extends AsyncTask <String, Void,String> {
         progressDialog.dismiss();
         dialog = new AlertDialog.Builder(context).create();
         dialog.setTitle("Welcome To Manvaasam");
-        value = Integer.parseInt(choice);
         if(s.contains("Successfull Login"))
         {
             if(choice.contains("98765")){
@@ -83,8 +82,8 @@ public class background extends AsyncTask <String, Void,String> {
                   }
 
         else{
-          dialog.setMessage(s);
-          // dialog.setMessage("Error in Connection please Try after some time Thank you");
+          //dialog.setMessage(s);
+           dialog.setMessage("Error in Connection please Try after some time Thank you");
            dialog.show();
         }
     }
