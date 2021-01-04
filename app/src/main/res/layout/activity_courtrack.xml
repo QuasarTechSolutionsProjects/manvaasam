@@ -84,7 +84,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="# Enter the Manvassam Courier ID \n For Example '29122020MAN001'"
+        android:text="# Enter the Manvassam Courier ID \n For Example DDMMYYM001"
         android:textColor="#FB0101"
         android:lineHeight="20dp"
         android:textSize="17dp"

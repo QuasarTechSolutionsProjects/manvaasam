@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 public class splash_screen extends AppCompatActivity {
    Handler handler;
@@ -24,11 +27,23 @@ public class splash_screen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(splash_screen.this,login_screen.class);
-                startActivity(intent);
-                finish();
+                SharedPreferences preferences = getSharedPreferences("logindetails",MODE_PRIVATE);
+                String usernamee = preferences.getString("usernameee","");
+                String password =  preferences.getString("password","");
+                String type = preferences.getString("type","");
+                if(!TextUtils.isEmpty(usernamee) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(type) ){
+//                    Toast.makeText(splash_screen.this,"Welcome Back" ,Toast.LENGTH_SHORT).show();
+                    background bg = new background(splash_screen.this);
+                    bg.execute(usernamee,password,type);
+                }
+                else {
+                    Intent intent = new Intent(splash_screen.this, login_screen.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         },3000);
+
         }
         else{
            new AlertDialog.Builder(this)

@@ -48,14 +48,6 @@ public class signin extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username);
         pass  = (EditText) findViewById(R.id.password);
         quasar = (ImageView) findViewById(R.id.quasartech1);
-        SharedPreferences preferences = getSharedPreferences("logindetails",MODE_PRIVATE);
-        String usernamee = preferences.getString("usernameee","");
-        String password =  preferences.getString("password","");
-        if(!TextUtils.isEmpty(usernamee) && !TextUtils.isEmpty(password)){
-            Toast.makeText(signin.this,"Welcome Back" ,Toast.LENGTH_SHORT).show();
-            background bg = new background(signin.this);
-            bg.execute(usernamee,password,value);
-        }
 
 
         quasar.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +70,7 @@ public class signin extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("usernameee",user);
                             editor.putString("password",passwd);
+                            editor.putString("type",value);
                             editor.apply();
                             background bg = new background(signin.this);
                             bg.execute(user,passwd,value);
