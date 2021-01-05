@@ -65,7 +65,6 @@ public class trackpack extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 packages packages = packagesList.get(i);
-                Toast.makeText(trackpack.this, packages.getMid(),Toast.LENGTH_LONG).show();
                 trackpackgetdetails tc = new trackpackgetdetails(trackpack.this);
                 tc.execute(packages.getMid());
             }

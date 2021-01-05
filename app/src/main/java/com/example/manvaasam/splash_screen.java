@@ -12,6 +12,8 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class splash_screen extends AppCompatActivity {
@@ -73,6 +75,7 @@ public class splash_screen extends AppCompatActivity {
                    })
                    .show();
         }
+
     }
     public  boolean checkconnection(){
         ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
