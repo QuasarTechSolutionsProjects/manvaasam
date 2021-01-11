@@ -10,7 +10,9 @@
 	isset($_POST['tmobile']) &&
 	isset($_POST['tadd']) &&
 	isset($_POST['tpin']) &&
-	isset($_POST['amt'])
+	isset($_POST['amt']) &&
+	isset($_POST['cname'])
+	
  )
  {
   $fname = $_POST['fname'];
@@ -22,8 +24,10 @@
   $tadd = $_POST['tadd'];
   $tpin =  $_POST['tpin'];
   $amt = $_POST['amt'];
+  $cname = $_POST['cname'];
 
- if($fname == "" && $fmobile == "" && $fadd == "" && $fpin == "" && $tname == "" && $tmobile && $tadd == "" && $tpin == "" && $amt == "" ){
+ if($fname == "" && $fmobile == "" && $fadd == "" && $fpin == "" && $tname == "" && $tmobile && $tadd == "" && $tpin == "" && $amt == "" )
+ {
  echo "Enter the values properly";
  }
 else{
@@ -36,6 +40,7 @@ else{
   $tadd = htmlspecialchars(strip_tags($tadd));
   $tpin = htmlspecialchars(strip_tags($tpin));
   $amt = htmlspecialchars(strip_tags($amt));
+  $cname = htmlspecialchars(strip_tags($cname));
 
 
   $fname = mysqli_real_escape_string($conn,$fname);
@@ -47,6 +52,7 @@ else{
   $tadd = mysqli_real_escape_string($conn,$tadd);
   $tpin = mysqli_real_escape_string($conn,$tpin);
   $amt = mysqli_real_escape_string($conn,$amt);
+  $cname = mysqli_real_escape_string($conn,$cname);
 
   date_default_timezone_set('Asia/Kolkata');
    
@@ -126,11 +132,12 @@ else{
   $tadd = cryptfun('encrypt',$tadd);
   $tpin = cryptfun('encrypt',$tpin);
   $amt = cryptfun('encrypt',$amt);
+  $cname = cryptfun('encrypt',$cname);
 
      
-  $stmt = $conn->prepare("INSERT INTO package(man_id,f_name,f_mobno,f_addr,f_pcode,t_name,t_mobno,t_addr,t_pcode,p_amt,p_date,p_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $stmt = $conn->prepare("INSERT INTO package(man_id,f_name,f_mobno,f_addr,f_pcode,t_name,t_mobno,t_addr,t_pcode,p_amt,p_date,p_time,c_uname) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
   
-  $stmt->bind_param('ssssssssssss', $man_id, $fname, $fmobile, $fadd, $fpin, $tname, $tmobile, $tadd, $tpin, $amt,$current_date,$current_time);
+  $stmt->bind_param('sssssssssssss', $man_id, $fname, $fmobile, $fadd, $fpin, $tname, $tmobile, $tadd, $tpin, $amt,$current_date,$current_time,$cname);
   
   
   

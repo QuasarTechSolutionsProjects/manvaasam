@@ -12,7 +12,7 @@ if(isset($_SESSION['auname']))
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Manvaasam Logistics Login Report</title>
-  <meta content="Logistics Admn Panel for Manvaasam Logistics APp" name="description">
+  <meta content="Logistics Admin Panel for Manvaasam Logistics APP" name="description">
   <meta content="Manvaasam, Manvaasam Logistics, App" name="keywords">
 
   <!-- Favicons -->
@@ -69,7 +69,8 @@ $sql = "SELECT * FROM team_login";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-  // output data of each row
+   // output data of each row
+   $i=1;
   
   while($row = mysqli_fetch_assoc($result)) 
   {
@@ -83,7 +84,9 @@ if (mysqli_num_rows($result) > 0) {
         $desg="St Courier Team";
 
       }
-    echo "<tr> <td>" . $row["sno"]. "</td> <td>" . cryptfun('decrypt',$row["user"])."</td> <td>".cryptfun('decrypt',$row["pswd"]) ."</td> <td>".cryptfun('decrypt',$row["email"]) . "</td> <td>".cryptfun('decrypt',$row["mobile"])."</td><td>". $desg. "</td></tr>";
+    echo "<tr> <td>" . $i . "</td> <td>" . cryptfun('decrypt',$row["user"])."</td> <td>".cryptfun('decrypt',$row["pswd"]) ."</td> <td>".cryptfun('decrypt',$row["email"]) . "</td> <td>".cryptfun('decrypt',$row["mobile"])."</td><td>". $desg. "</td></tr>";
+    
+    $i++;
     
    
 }

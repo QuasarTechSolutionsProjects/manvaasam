@@ -151,14 +151,9 @@ if(isset($_POST['submit']))
       $count=$count+1;
     }
 
-    if (strlen($pass) <= '8' && strlen($pass) >= '15' ) {
-      echo"<script>window.alert('Pls Enter Password from 8 to 15 characters')</script>;";
-    } elseif (!preg_match("#[0-9]+#", $pass)) {
-      echo"<script>window.alert('Enter atleast one number in Password')</script>;";
-    } elseif (!preg_match("#[A-Z]+#", $pass)) {
-      echo"<script>window.alert('Enter atleast one uppercase in Password')</script>;";
-    } elseif (!preg_match("#[a-z]+#", $pass)) {
-      echo"<script>window.alert('Enter atleast one lowercase in Password')</script>;";
+    if (strlen($pass) < '4') 
+    {
+      echo"<script>window.alert('Pls Enter Password with atleast 4 characters')</script>;";
     } 
    else 
   {
