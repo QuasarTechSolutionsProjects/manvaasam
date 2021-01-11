@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -31,6 +32,7 @@ public class createpack extends AppCompatActivity {
     AlertDialog dialog;
     TextInputEditText fromname,toname,frommob,tomob,fromadd,toadd,frompin,topin,id,amountt;
     TextView submit,cancel;
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,15 @@ public class createpack extends AppCompatActivity {
         submit = (TextView) findViewById(R.id.submit);
         cancel = (TextView) findViewById(R.id.goback);
         amountt = (TextInputEditText) findViewById(R.id.amount);
+        SharedPreferences preferences = getSharedPreferences("logindetails",MODE_PRIVATE);
+        username = preferences.getString("usernameee","");
+        if(
+                TextUtils.isEmpty(username) &&
+                        username.length() < 0 &&
+                        username == null
+        ){
+            username = "overridded";
+        }
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,7 +96,7 @@ public class createpack extends AppCompatActivity {
                                                         @Override
                                                         public void onClick(DialogInterface dialogInterface, int i) {
                                                             createpackage cr = new createpackage(createpack.this);
-                                                            cr.execute(id, fname, fmobile, fadd, fpin, tname, tmobile, tadd, tpin, amt);
+                                                            cr.execute(id, fname, fmobile, fadd, fpin, tname, tmobile, tadd, tpin, amt,username);
 
                                                         }
                                                     });

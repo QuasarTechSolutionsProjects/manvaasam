@@ -90,6 +90,7 @@ public class createpackage extends AsyncTask<String, Void,String> {
         String tadd = voids[7];
         String tpin = voids[8];
         String amt = voids[9];
+        String cname = voids[10];
 
         String connstr = "https://quasartechsolutions.in/manvaasam/create.php";
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
@@ -141,6 +142,7 @@ public class createpackage extends AsyncTask<String, Void,String> {
             http.setDoOutput(true);
             http.setDoOutput(true);
             http.setDoOutput(true);
+            http.setDoOutput(true);
 
             OutputStream ops = http.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(ops,"UTF-8"));
@@ -152,7 +154,8 @@ public class createpackage extends AsyncTask<String, Void,String> {
                     +"&&"+URLEncoder.encode("tmobile","UTF-8")+"="+URLEncoder.encode(tmobile,"UTF-8")
                     +"&&"+URLEncoder.encode("tadd","UTF-8")+"="+URLEncoder.encode(tadd,"UTF-8")
                     +"&&"+URLEncoder.encode("tpin","UTF-8")+"="+URLEncoder.encode(tpin,"UTF-8")
-                    +"&&"+URLEncoder.encode("amt","UTF-8")+"="+URLEncoder.encode(amt,"UTF-8");
+                    +"&&"+URLEncoder.encode("amt","UTF-8")+"="+URLEncoder.encode(amt,"UTF-8")
+                    +"&&"+URLEncoder.encode("cname","UTF-8")+"="+URLEncoder.encode(cname,"UTF-8");
             writer.write(data);
             writer.flush();
             writer.close();
