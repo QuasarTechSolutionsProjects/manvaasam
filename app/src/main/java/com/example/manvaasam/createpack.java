@@ -76,11 +76,11 @@ public class createpack extends AppCompatActivity {
                 String amt = amountt.getText().toString();
                 String id = "12345";
                 if(!TextUtils.isEmpty(fname)){
-                    if((!TextUtils.isEmpty(fmobile)) && ((fmobile.length() == 10) || (fmobile.length() > 10))  ){
+                    if((!TextUtils.isEmpty(fmobile)) && ((fmobile.length() == 10))  ){
                         if (!TextUtils.isEmpty(fadd)){
                             if(!TextUtils.isEmpty(fpin) &&  fp == 6  ){
                                 if(!TextUtils.isEmpty(tname)){
-                                    if ((!TextUtils.isEmpty(tmobile)) && ((tmobile.length() == 10) || (tmobile.length() > 10 )) ){
+                                    if ((!TextUtils.isEmpty(tmobile)) && ((tmobile.length() == 10)) ){
                                         if(!TextUtils.isEmpty(tadd)){
                                             if (!TextUtils.isEmpty(tpin) &&  tp == 6 ){
                                                 if(!TextUtils.isEmpty(amt)){
