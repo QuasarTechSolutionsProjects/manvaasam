@@ -68,6 +68,11 @@ if(isset($_SESSION['auname']))
 
       </div>
     </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    &nbsp;
     <!-- ======= Footer ======= -->
   <footer id="footer">
   
