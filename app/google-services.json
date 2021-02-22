@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1044321054938",
-    "project_id": "manvaasam-540fb",
-    "storage_bucket": "manvaasam-540fb.appspot.com"
+    "project_number": "578843312125",
+    "project_id": "manvaasam-logistics",
+    "storage_bucket": "manvaasam-logistics.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1044321054938:android:dd5b473c1ffd6511c235e3",
+        "mobilesdk_app_id": "1:578843312125:android:6566500e0390e6484d6394",
         "android_client_info": {
-          "package_name": "com.example.manvaasam"
+          "package_name": "com.quasar.manvaasam_logistics"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1044321054938-f66dntop8v731mr9d5bp1i9i17ntcch1.apps.googleusercontent.com",
+          "client_id": "578843312125-15uu1usuh74jeiaj4ofvklc36e5h53uh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC8ZEN90BS7xdCylcwRbA5SjZx8f7dcjDI"
+          "current_key": "AIzaSyDZAENr9rHqcCV12mlr2npUk45vtyyiL-k"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1044321054938-f66dntop8v731mr9d5bp1i9i17ntcch1.apps.googleusercontent.com",
+              "client_id": "578843312125-15uu1usuh74jeiaj4ofvklc36e5h53uh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
