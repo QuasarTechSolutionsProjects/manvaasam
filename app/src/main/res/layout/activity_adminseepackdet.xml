@@ -115,65 +115,6 @@
                 android:layout_gravity="center"
                 />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address"
-                android:fontFamily="@font/poppinsmedium"
-                android:textSize="19dp"
-                android:layout_marginLeft="25dp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                />
-            <TextView
-                android:id="@+id/add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name"
-                android:fontFamily="@font/poppinsmedium"
-                android:textSize="19dp"
-                android:layout_marginLeft="59dp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                />
-        </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pincode"
-                android:fontFamily="@font/poppinsmedium"
-                android:textSize="19dp"
-                android:layout_marginLeft="25dp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                />
-            <TextView
-                android:id="@+id/pin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name"
-                android:fontFamily="@font/poppinsmedium"
-                android:textSize="19dp"
-                android:layout_marginLeft="60dp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                />
-        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -257,7 +198,75 @@
                 android:layout_gravity="center"
                 />
             <TextView
-                android:id="@+id/toaddr"
+                android:id="@+id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="59dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pincode"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/pin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="60dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/poppinsbold"
+            android:text="Courier Details"
+            android:textColor="@color/black"
+            android:textSize="21dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type      "
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:id="@+id/ptype"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
@@ -277,7 +286,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pincode"
+                android:text="Amount"
                 android:fontFamily="@font/poppinsmedium"
                 android:textSize="19dp"
                 android:layout_marginLeft="25dp"
@@ -285,7 +294,7 @@
                 android:layout_gravity="center"
                 />
             <TextView
-                android:id="@+id/topin"
+                android:id="@+id/amt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
@@ -314,7 +323,7 @@
                 android:layout_gravity="center"
                 />
             <TextView
-                android:id="@+id/cid"
+                android:id="@+id/courid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="status not updated"
@@ -337,11 +346,34 @@
             android:layout_gravity="center">
 
             <TextView
-                android:id="@+id/submit"
-                android:layout_width="190dp"
+                android:id="@+id/stcour"
+                android:layout_width="300dp"
                 android:layout_height="40dp"
                 android:background="@drawable/cta_button2"
-                android:text="COPY ID &amp; TRACK"
+                android:text="TRACK WITH STCOURIER"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/professional"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/cta_button2"
+                android:text="TRACK WITH PROFESSIONAL"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/mettur"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cta_button2"
+                android:text="TRACK WITH METTUR"
                 android:textSize="18dp"
                 android:textColor="@color/white"
                 android:gravity="center"/>

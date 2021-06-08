@@ -15,10 +15,10 @@ public class trackweb extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trackweb);
-
+        String URL = getIntent().getStringExtra("url");
         webView =(WebView) findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("http://www.erpstcourier.com/awb_tracking2.php");
+        webView.loadUrl(URL);
 
         WebSettings webSettings =webView.getSettings();
         webSettings.setJavaScriptEnabled(true);

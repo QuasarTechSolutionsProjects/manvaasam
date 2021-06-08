@@ -83,12 +83,12 @@ public class createpackage extends AsyncTask<String, Void,String> {
         id = voids[0];
         String fname = voids[1];
         String fmobile = voids[2];
-        String fadd = voids[3];
-        String fpin = voids[4];
-        String tname = voids[5];
-        String tmobile = voids[6];
-        String tadd = voids[7];
-        String tpin = voids[8];
+        String tname = voids[3];
+        String tmobile = voids[4];
+        String tadd = voids[5];
+        String tpin = voids[6];
+        String packdet = voids[7];
+        String parcdet = voids[8];
         String amt = voids[9];
         String cname = voids[10];
 
@@ -120,12 +120,12 @@ public class createpackage extends AsyncTask<String, Void,String> {
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(ops,"UTF-8"));
             String data = URLEncoder.encode("fname","UTF-8")+"="+URLEncoder.encode(fname,"UTF-8")
                     +"&&"+URLEncoder.encode("fmobile","UTF-8")+"="+URLEncoder.encode(fmobile,"UTF-8")
-                    +"&&"+URLEncoder.encode("fadd","UTF-8")+"="+URLEncoder.encode(fadd,"UTF-8")
-                    +"&&"+URLEncoder.encode("fpin","UTF-8")+"="+URLEncoder.encode(fpin,"UTF-8")
                     +"&&"+URLEncoder.encode("tname","UTF-8")+"="+URLEncoder.encode(tname,"UTF-8")
                     +"&&"+URLEncoder.encode("tmobile","UTF-8")+"="+URLEncoder.encode(tmobile,"UTF-8")
                     +"&&"+URLEncoder.encode("tadd","UTF-8")+"="+URLEncoder.encode(tadd,"UTF-8")
                     +"&&"+URLEncoder.encode("tpin","UTF-8")+"="+URLEncoder.encode(tpin,"UTF-8")
+                    +"&&"+URLEncoder.encode("packitem","UTF-8")+"="+URLEncoder.encode(packdet,"UTF-8")
+                    +"&&"+URLEncoder.encode("parcdet","UTF-8")+"="+URLEncoder.encode(parcdet,"UTF-8")
                     +"&&"+URLEncoder.encode("amt","UTF-8")+"="+URLEncoder.encode(amt,"UTF-8")
                     +"&&"+URLEncoder.encode("cname","UTF-8")+"="+URLEncoder.encode(cname,"UTF-8");
             writer.write(data);

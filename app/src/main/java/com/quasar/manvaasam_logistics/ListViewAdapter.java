@@ -45,7 +45,7 @@ public class ListViewAdapter extends ArrayAdapter<packages> {
 
         //setting hero values to textviews
         textViewName.setText("MANVAASAM ID: "+packages.getMid());
-        textViewImageUrl.setText("ST Courier ID: "+packages.getSid());
+        textViewImageUrl.setText("Courier ID: "+packages.getSid());
 
         //returning the listitem
         return listViewItem;

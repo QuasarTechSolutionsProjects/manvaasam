@@ -73,16 +73,16 @@ public class getpackagedetails extends AsyncTask<String, Void,String> {
                    JSONObject jsonresult = new JSONObject(s);
                    String fname = jsonresult.getString("fname");
                    String fmobile = jsonresult.getString("fmobile");
-                   String faddr = jsonresult.getString("faddr");
-                   String fcode = jsonresult.getString("fcode");
                    String toname = jsonresult.getString("tname");
                    String tomobile = jsonresult.getString("tmobile");
                    String taddr = jsonresult.getString("taddr");
                    String tcode = jsonresult.getString("tcode");
+                   String packtype = jsonresult.getString("packtype");
+                   String parcdet = jsonresult.getString("parcdet");
                    if(fname.contains("false") &&
                            fmobile.contains("false") &&
-                           faddr.contains("false") &&
-                           fcode.contains("false") &&
+                           taddr.contains("false") &&
+                           tcode.contains("false") &&
                            toname.contains("false") &&
                            tomobile.contains("false") ){
                        dialog.setMessage("Please Enter the Correct Id or Package Already Updated");
@@ -93,23 +93,22 @@ public class getpackagedetails extends AsyncTask<String, Void,String> {
                    else if(
                            fname != null  &&
                            fmobile != null &&
-                           faddr !=null &&
-                           fcode != null &&
+                           taddr !=null &&
+                           tcode != null &&
                            toname != null &&
                            tomobile != null &&
-                           taddr != null &&
-                           tcode != null
+                           packtype != null
                    )
                    {
                       Intent intent = new Intent(context.getApplicationContext(),seecorudet.class);
                       intent.putExtra("fname",fname);
                        intent.putExtra("fmobile",fmobile);
-                       intent.putExtra("faddr",faddr);
-                       intent.putExtra("fcode",fcode);
                        intent.putExtra("tname",toname);
                        intent.putExtra("tmobile",tomobile);
                        intent.putExtra("taddr",taddr);
                        intent.putExtra("tcode",tcode);
+                       intent.putExtra("packtype",packtype);
+                       intent.putExtra("parcdet",parcdet);
                        intent.putExtra("manid",id);
                        context.startActivity(intent);
                        ((Activity) context).finish();

@@ -9,4 +9,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string-array name="packageselect">
+        <item>Select the Courier Details</item>
+        <item>Courier</item>
+        <item>Parcel</item>
+    </string-array>
 </resources>

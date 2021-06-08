@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class adminseepackdet extends AppCompatActivity {
-    TextView tv,submit,goback,fname,fmobile,faddr,fcode,tname,tmobile,taddr,tcode,cid;
+    TextView tv,goback,fname,fmobile,tname,tmobile,taddr,tcode,ptype,amt,cid,stcour,proff,mettur;
     ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +21,13 @@ public class adminseepackdet extends AppCompatActivity {
         setContentView(R.layout.activity_adminseepackdet);
         fname = (TextView) findViewById(R.id.fromname);
         fmobile = (TextView) findViewById(R.id.mobile);
-        faddr = (TextView) findViewById(R.id.add);
-        fcode = (TextView) findViewById(R.id.pin);
+        taddr = (TextView) findViewById(R.id.add);
+        tcode = (TextView) findViewById(R.id.pin);
         tname = (TextView) findViewById(R.id.toname);
         tmobile = (TextView) findViewById(R.id.tomobile);
-        taddr = (TextView) findViewById(R.id.toaddr);
-        tcode = (TextView) findViewById(R.id.topin);
-        cid = (TextView) findViewById(R.id.cid);
+        ptype = (TextView) findViewById(R.id.ptype);
+        amt = (TextView) findViewById(R.id.amt);
+        cid = (TextView) findViewById(R.id.courid);
         progressDialog = new ProgressDialog(adminseepackdet.this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Please wait.......Fetching details");
@@ -36,26 +36,63 @@ public class adminseepackdet extends AppCompatActivity {
         fname.setText(getIntent().getExtras().getString("fname"));
         //Toast.makeText(seecorudet.this,getIntent().getExtras().getString("fname"),Toast.LENGTH_SHORT).show();
         fmobile.setText(getIntent().getExtras().getString("fmobile"));
-        faddr.setText(getIntent().getExtras().getString("faddr"));
-        fcode.setText(getIntent().getExtras().getString("fcode"));
         tname.setText(getIntent().getExtras().getString("tname"));
         tmobile.setText(getIntent().getExtras().getString("tmobile"));
         taddr.setText(getIntent().getExtras().getString("taddr"));
         tcode.setText(getIntent().getExtras().getString("tcode"));
+        ptype.setText(getIntent().getExtras().getString("packtype"));
+        amt.setText("Rs "+getIntent().getExtras().getString("amt"));
         cid.setText(getIntent().getExtras().getString("cid"));
         if(progressDialog.isShowing()){
             progressDialog.dismiss();
         }
-        submit = (TextView) findViewById(R.id.submit);
-        submit.setOnClickListener(new View.OnClickListener() {
+        stcour = (TextView) findViewById(R.id.stcour);
+        stcour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip= ClipData.newPlainText("StcourierId",cid.getText().toString());
+                ClipData clip= ClipData.newPlainText("CourierId",cid.getText().toString());
                 clipboard.setPrimaryClip(clip);
 
                 Toast.makeText(adminseepackdet.this, "Id Copied",Toast.LENGTH_LONG).show();
-                startActivity(new Intent(adminseepackdet.this,trackweb.class));
+                Intent intent = new Intent(adminseepackdet.this,trackweb.class);
+                String URL="http://www.erpstcourier.com/awb_tracking2.php";
+                intent.putExtra("url",URL);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        proff = (TextView) findViewById(R.id.professional);
+        proff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip= ClipData.newPlainText("CourierId",cid.getText().toString());
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(adminseepackdet.this, "Id Copied",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(adminseepackdet.this,trackweb.class);
+                String URL="https://www.tpcglobe.com/";
+                intent.putExtra("url",URL);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        mettur= (TextView) findViewById(R.id.mettur);
+        mettur.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip= ClipData.newPlainText("CourierId",cid.getText().toString());
+                clipboard.setPrimaryClip(clip);
+
+                Toast.makeText(adminseepackdet.this, "Id Copied",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(adminseepackdet.this,trackweb.class);
+                String URL="https://www.metturtransports.com/";
+                intent.putExtra("url",URL);
+                startActivity(intent);
                 finish();
             }
         });

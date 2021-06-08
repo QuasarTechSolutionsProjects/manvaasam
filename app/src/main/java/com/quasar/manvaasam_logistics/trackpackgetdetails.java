@@ -61,10 +61,6 @@ public class trackpackgetdetails extends AsyncTask<String, Void,String> {
         {
             dialog.setMessage("Id is incorrect");
             dialog.show();
-//            Intent intent_name = new Intent();
-//            intent_name.setClass(context.getApplicationContext(),MainActivity.class);
-//            context.startActivity(intent_name);
-//            ((Activity) context).finish();
 
      }
         else if (s.contains("no record")){
@@ -79,36 +75,36 @@ public class trackpackgetdetails extends AsyncTask<String, Void,String> {
                 JSONObject jsonresult = new JSONObject(s);
                 String fname = jsonresult.getString("fname");
                 String fmobile = jsonresult.getString("fmobile");
-                String faddr = jsonresult.getString("faddr");
-                String fcode = jsonresult.getString("fcode");
                 String toname = jsonresult.getString("tname");
                 String tomobile = jsonresult.getString("tmobile");
                 String taddr = jsonresult.getString("taddr");
                 String tcode = jsonresult.getString("tcode");
+                String packtype = jsonresult.getString("packtype");
+                String amt = jsonresult.getString("amt");
                 String cid = jsonresult.getString("cid");
 
 
                 if(
                                 fname != null  &&
                                 fmobile != null &&
-                                faddr !=null &&
-                                fcode != null &&
+                                taddr !=null &&
+                                tcode != null &&
                                 toname != null &&
                                 tomobile != null &&
-                                taddr != null &&
-                                tcode != null &&
+                                packtype != null &&
+                                amt != null &&
                                         cid != null
                 )
                 {
                     Intent intent = new Intent(context.getApplicationContext(),adminseepackdet.class);
                     intent.putExtra("fname",fname);
                     intent.putExtra("fmobile",fmobile);
-                    intent.putExtra("faddr",faddr);
-                    intent.putExtra("fcode",fcode);
                     intent.putExtra("tname",toname);
                     intent.putExtra("tmobile",tomobile);
                     intent.putExtra("taddr",taddr);
                     intent.putExtra("tcode",tcode);
+                    intent.putExtra("packtype",packtype);
+                    intent.putExtra("amt",amt);
                     intent.putExtra("cid",cid);
                     context.startActivity(intent);
 

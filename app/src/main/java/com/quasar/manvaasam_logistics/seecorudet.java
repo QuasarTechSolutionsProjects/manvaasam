@@ -21,7 +21,7 @@ import org.w3c.dom.Text;
 
 public class seecorudet extends AppCompatActivity {
    Button scabtn;
-   TextView tv,submit,goback,fname,fmobile,faddr,fcode,tname,tmobile,taddr,tcode;
+   TextView tv,submit,goback,fname,fmobile,tname,tmobile,taddr,tcode,ptype,pdesc;
    TextInputEditText scanid;
    ProgressDialog progressDialog;
    String w,x;
@@ -31,12 +31,12 @@ public class seecorudet extends AppCompatActivity {
         setContentView(R.layout.activity_seecorudet);
         fname = (TextView) findViewById(R.id.fromname);
         fmobile = (TextView) findViewById(R.id.mobile);
-        faddr = (TextView) findViewById(R.id.add);
-        fcode = (TextView) findViewById(R.id.pin);
+        taddr = (TextView) findViewById(R.id.add);
+        tcode = (TextView) findViewById(R.id.pin);
         tname = (TextView) findViewById(R.id.toname);
         tmobile = (TextView) findViewById(R.id.tomobile);
-        taddr = (TextView) findViewById(R.id.toaddr);
-        tcode = (TextView) findViewById(R.id.topin);
+        ptype = (TextView) findViewById(R.id.ptype);
+        pdesc = (TextView) findViewById(R.id.parcdet);
         progressDialog = new ProgressDialog(seecorudet.this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Please wait.......Fetching details");
@@ -45,12 +45,12 @@ public class seecorudet extends AppCompatActivity {
         fname.setText(getIntent().getExtras().getString("fname"));
         //Toast.makeText(seecorudet.this,getIntent().getExtras().getString("fname"),Toast.LENGTH_SHORT).show();
         fmobile.setText(getIntent().getExtras().getString("fmobile"));
-        faddr.setText(getIntent().getExtras().getString("faddr"));
-        fcode.setText(getIntent().getExtras().getString("fcode"));
         tname.setText(getIntent().getExtras().getString("tname"));
         tmobile.setText(getIntent().getExtras().getString("tmobile"));
         taddr.setText(getIntent().getExtras().getString("taddr"));
         tcode.setText(getIntent().getExtras().getString("tcode"));
+        ptype.setText(getIntent().getExtras().getString("packtype"));
+        pdesc.setText(getIntent().getExtras().getString("parcdet"));
         w = getIntent().getExtras().getString("manid");
         if(progressDialog.isShowing()){
             progressDialog.dismiss();
@@ -77,7 +77,7 @@ public class seecorudet extends AppCompatActivity {
          public void onClick(View view) {
              x = scanid.getText().toString();
              if(TextUtils.isEmpty(x)){
-                 scanid.setError("manvaasam id cannot be empty");
+                 scanid.setError("Manvaasam id cannot be empty");
                  scanid.requestFocus();
              }else{
                  insertcourierid ins = new insertcourierid(seecorudet.this);
