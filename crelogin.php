@@ -80,7 +80,7 @@ if(isset($_SESSION['auname']))
             <select name="desg" id="desg" class="form-control" required>
             <option value="">Select the Designation </option>
            <option value="<?php echo "Manvaasam";?>">Manvaasam Team </option>
-           <option value="<?php echo "StCourier";?>">St Courier Team</option>
+           <option value="<?php echo "Courier";?>">Courier Team</option>
             </select>
               <div class="validate"></div>
             </div>
@@ -184,7 +184,7 @@ if(isset($_POST['submit']))
   {
     $type=0;
   }
-  elseif($desg=="StCourier")
+  elseif($desg=="Courier")
   {
     $type=1;
   }

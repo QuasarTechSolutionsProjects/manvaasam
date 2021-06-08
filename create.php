@@ -4,29 +4,33 @@
   if(
     isset($_POST['fname']) &&
 	isset($_POST['fmobile']) &&
-	isset($_POST['fadd']) &&
-	isset($_POST['fpin']) &&
 	isset($_POST['tname']) &&
 	isset($_POST['tmobile']) &&
 	isset($_POST['tadd']) &&
 	isset($_POST['tpin']) &&
-	isset($_POST['amt']) &&
+	isset($_POST['packitem']) &&
+  isset($_POST['parcdet']) &&
+  isset($_POST['amt']) &&
 	isset($_POST['cname'])
 	
  )
  {
   $fname = $_POST['fname'];
   $fmobile =  $_POST['fmobile'];
-  $fadd = $_POST['fadd'];
-  $fpin = $_POST['fpin'];
+  $fadd = "NA";
+  $fpin =  "NA";
   $tname =  $_POST['tname'];
   $tmobile = $_POST['tmobile'];
   $tadd = $_POST['tadd'];
-  $tpin =  $_POST['tpin'];
+  $tpin = $_POST['tpin'];
+  $packitem=$_POST['packitem'];
+  $parcdet=$_POST['parcdet'];
   $amt = $_POST['amt'];
   $cname = $_POST['cname'];
+  
+  
 
- if($fname == "" && $fmobile == "" && $fadd == "" && $fpin == "" && $tname == "" && $tmobile && $tadd == "" && $tpin == "" && $amt == "" )
+ if($fname == "" && $fmobile == "" && $fadd == "" && $fpin == "" && $tname == "" && $tmobile && $packitem == ""  && $parcdet == ""&& $amt == "" )
  {
  echo "Enter the values properly";
  }
@@ -39,6 +43,8 @@ else{
   $tmobile = htmlspecialchars(strip_tags($tmobile));
   $tadd = htmlspecialchars(strip_tags($tadd));
   $tpin = htmlspecialchars(strip_tags($tpin));
+  $packitem = htmlspecialchars(strip_tags($packitem));
+  $parcdet = htmlspecialchars(strip_tags($parcdet));
   $amt = htmlspecialchars(strip_tags($amt));
   $cname = htmlspecialchars(strip_tags($cname));
 
@@ -51,6 +57,8 @@ else{
   $tmobile = mysqli_real_escape_string($conn,$tmobile);
   $tadd = mysqli_real_escape_string($conn,$tadd);
   $tpin = mysqli_real_escape_string($conn,$tpin);
+  $packitem = htmlspecialchars(strip_tags($packitem));
+  $parcdet = htmlspecialchars(strip_tags($parcdet));
   $amt = mysqli_real_escape_string($conn,$amt);
   $cname = mysqli_real_escape_string($conn,$cname);
 
@@ -131,13 +139,15 @@ else{
   $tmobile = cryptfun('encrypt',$tmobile);
   $tadd = cryptfun('encrypt',$tadd);
   $tpin = cryptfun('encrypt',$tpin);
+  $packitem = cryptfun('encrypt',$packitem);
+  $parcdet = cryptfun('encrypt',$parcdet);
   $amt = cryptfun('encrypt',$amt);
   $cname = cryptfun('encrypt',$cname);
 
      
-  $stmt = $conn->prepare("INSERT INTO package(man_id,f_name,f_mobno,f_addr,f_pcode,t_name,t_mobno,t_addr,t_pcode,p_amt,p_date,p_time,c_uname) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $stmt = $conn->prepare("INSERT INTO package(man_id,f_name,f_mobno,f_addr,f_pcode,t_name,t_mobno,t_addr,t_pcode,pack_type,parc_det,p_amt,p_date,p_time,c_uname) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
   
-  $stmt->bind_param('sssssssssssss', $man_id, $fname, $fmobile, $fadd, $fpin, $tname, $tmobile, $tadd, $tpin, $amt,$current_date,$current_time,$cname);
+  $stmt->bind_param('sssssssssssssss', $man_id, $fname, $fmobile, $fadd, $fpin, $tname, $tmobile, $tadd, $tpin,$packitem,$parcdet,$amt,$current_date,$current_time,$cname);
   
   
   
@@ -150,7 +160,8 @@ else{
        
   }
 else{
-     echo "Connection Unsuccessfully";
+     echo "Connection Unsuccessful";
+     echo $this->stmt->conn->error_list;
   }
   
   $conn->close();

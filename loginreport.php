@@ -81,7 +81,7 @@ if (mysqli_num_rows($result) > 0) {
       }
       else
       {
-        $desg="St Courier Team";
+        $desg="Courier Team";
 
       }
     echo "<tr> <td>" . $i . "</td> <td>" . cryptfun('decrypt',$row["user"])."</td> <td>".cryptfun('decrypt',$row["pswd"]) ."</td> <td>".cryptfun('decrypt',$row["email"]) . "</td> <td>".cryptfun('decrypt',$row["mobile"])."</td><td>". $desg. "</td></tr>";

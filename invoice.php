@@ -13,8 +13,18 @@ while($row = mysqli_fetch_array($result))
           
 $fname = cryptfun('decrypt', $row['f_name']);
 $f_mobno = cryptfun('decrypt', $row['f_mobno']);
-$f_addr = cryptfun('decrypt', $row['f_addr']);
-$f_pcode = cryptfun('decrypt', $row['f_pcode']);
+$packtype = $row['pack_type'];
+$parcdet = $row['parc_det'];
+if($packtype==="" && $parcdet==="")
+{
+    $packtype="Not Recorded";
+    $parcdet="Not Recorded";
+}
+else
+{
+    $packtype = cryptfun('decrypt', $row['pack_type']);
+    $parcdet = cryptfun('decrypt', $row['parc_det']); 
+}
 
 $t_name = cryptfun('decrypt', $row['t_name']);
 $t_mobno = cryptfun('decrypt', $row['t_mobno']);
@@ -114,12 +124,6 @@ $pdf->Cell(90 ,5,'Name: '.$fname,0,1);
 $pdf->Cell(10 ,5,'',0,0);
 $pdf->Cell(90 ,5,'Mob no: '.$f_mobno,0,1);
 
-$pdf->Cell(10 ,5,'',0,0);
-$pdf->Cell(90 ,5,'Address: '.$f_addr,0,1);
-
-$pdf->Cell(10 ,5,'',0,0);
-$pdf->Cell(90 ,5,'Pin Code: '.$f_pcode,0,1);
-
 
 $pdf->Cell(189 ,10,'',0,1);
 
@@ -137,6 +141,18 @@ $pdf->Cell(90 ,5,'Address: '.$t_addr,0,1);
 
 $pdf->Cell(10 ,5,'',0,0);
 $pdf->Cell(90 ,5,'Pin Code: '.$t_pcode,0,1);
+
+
+
+$pdf->Cell(189 ,10,'',0,1);
+
+$pdf->Cell(100 ,5,'Package Details:-',0,1);
+
+$pdf->Cell(10 ,5,'',0,0);
+$pdf->Cell(90 ,5,'Package Type: '.$packtype,0,1);
+
+$pdf->Cell(10 ,5,'',0,0);
+$pdf->Cell(90 ,5,'Parcel Details: '.$parcdet,0,1);
 
 
 $pdf->Cell(189 ,10,'',0,1);

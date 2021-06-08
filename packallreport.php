@@ -51,17 +51,17 @@ td
 <th>Manvaasam ID</th>
 <th>Sender Name</th>
 <th>Sender Mobile Number</th>
-<th>Sender Address</th>
-<th>Sender Pincode</th>
 <th>Receiver Name</th>
 <th>Receiver Mobile Number</th>
 <th>Receiver Address</th>
 <th>Receiver Pincode</th>
+<th>Package Type</th>
+<th>Parcel Details</th>
 <th>Package Amount(Rs)</th>
 <th>Package Date</th>
 <th>Package Time</th>
 <th>Package Created By</th>
-<th>St Courier ID</th>
+<th>Courier ID</th>
 
 </tr></thead>
 <tbody>
@@ -88,8 +88,20 @@ if (mysqli_num_rows($result) > 0) {
       {
         $sid=cryptfun('decrypt',$sid);  
       }
-      echo "<tr> <td>" . $i . "</td> <td>" . cryptfun('decrypt',$row["man_id"])."</td> <td>".cryptfun('decrypt',$row["f_name"]) ."</td> <td>".cryptfun('decrypt',$row["f_mobno"]) . "</td> <td>".cryptfun('decrypt',$row["f_addr"]). "</td> <td>" . cryptfun('decrypt',$row["f_pcode"]). "</td> <td>" . cryptfun('decrypt',$row["t_name"])."</td> <td>".cryptfun('decrypt',$row["t_mobno"]) ."</td> <td>".cryptfun('decrypt',$row["t_addr"]) . "</td> <td>".cryptfun('decrypt',$row["t_pcode"])."</td> <td>".cryptfun('decrypt',$row["p_amt"]) . "</td> <td>" .$row["p_date"] . "</td> <td>" .$row["p_time"] . "</td> <td>" .cryptfun('decrypt',$row["c_uname"])."</td> <td>".$sid . "</td></tr>";
-      $i++;
+      $packtype=$row["pack_type"];
+      $parcdet=$row["parc_det"];
+      if($packtype==="" && $parcdet==="")
+      {
+        $packtype="Not Recorded";
+        $parcdet="Not Recorded";
+      }
+      else
+      {
+        $packtype=cryptfun('decrypt',$packtype);
+        $parcdet=cryptfun('decrypt',$packdet);
+      }
+     echo "<tr> <td>" . $i . "</td> <td>" . cryptfun('decrypt',$row["man_id"])."</td> <td>".cryptfun('decrypt',$row["f_name"]) ."</td> <td>".cryptfun('decrypt',$row["f_mobno"]) . "</td> <td>" . cryptfun('decrypt',$row["t_name"])."</td> <td>".cryptfun('decrypt',$row["t_mobno"]) ."</td> <td>".cryptfun('decrypt',$row["t_addr"]) . "</td> <td>".cryptfun('decrypt',$row["t_pcode"]). "</td> <td>".$packtype. "</td> <td>" . $parcdet ."</td> <td>"."Rs ".cryptfun('decrypt',$row["p_amt"]) . "</td> <td>" .$row["p_date"] . "</td> <td>" .$row["p_time"] . "</td> <td>" .cryptfun('decrypt',$row["c_uname"])."</td> <td>".$sid . "</td></tr>";
+     $i++;
     
 }
     echo "</table>";

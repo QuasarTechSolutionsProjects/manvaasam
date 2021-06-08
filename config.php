@@ -1,11 +1,11 @@
 <?php
 $servername='localhost';
 
-$username='u383638241_medihubpvt';
+$username='root';
 
-$password='Bharath@MatheshBM2K21';
+$password='';
 
-$dbname='u383638241_manvaasam';
+$dbname='manvaasam';
 
 $conn = mysqli_connect($servername,$username,$password,$dbname);
 

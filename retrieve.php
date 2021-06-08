@@ -1,10 +1,11 @@
   <?php
+  header('Content-Type: application/json');
   require("config.php");
   include_once("shaping.php");
  
   if($conn){
  
-$sql = "SELECT man_id, st_courid FROM package  WHERE st_courid IS NOT NULL ORDER BY st_courid DESC LIMIT 50";
+$sql = "SELECT man_id, st_courid FROM package  WHERE st_courid IS NOT NULL ORDER BY p_date DESC LIMIT 50";
  
 $res = mysqli_query($conn,$sql);
 
