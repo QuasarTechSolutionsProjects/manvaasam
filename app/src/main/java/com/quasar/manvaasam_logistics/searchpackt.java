@@ -90,7 +90,7 @@ public class searchpackt extends AppCompatActivity {
 
 
     private void loadHeroList(String mid) {
-        JSON_URL = new StringBuilder().append("https://quasartechsolutions.in/manvaasam/search.php?searchid=").append(mid).toString();
+        JSON_URL = new StringBuilder().append("https://manvaasam.com/logistics/search.php?searchid=").append(mid).toString();
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .penaltyLog()

@@ -101,7 +101,7 @@ public class background extends AsyncTask <String, Void,String> {
                 .penaltyLog()
                 .build();
         StrictMode.setThreadPolicy(policy);
-        String connstr = "https://www.quasartechsolutions.in/manvaasam/login.php";
+        String connstr = "https://www.manvaasam.com/logistics/login.php";
 
         try {
             URL url = new URL(connstr);

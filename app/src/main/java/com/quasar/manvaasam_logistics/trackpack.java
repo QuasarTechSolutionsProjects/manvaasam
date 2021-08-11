@@ -39,7 +39,7 @@ import javax.net.ssl.X509TrustManager;
 public class trackpack extends AppCompatActivity {
 
     //the URL having the json data
-    private static final String JSON_URL = "https://quasartechsolutions.in/manvaasam/retrieve.php";
+    private static final String JSON_URL = "https://manvaasam.com/logistics/retrieve.php";
 
 
     //listview object

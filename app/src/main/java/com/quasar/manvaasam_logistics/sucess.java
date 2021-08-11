@@ -55,7 +55,7 @@ public class sucess extends AppCompatActivity {
     public void downloadpdf(String manid)
    {
 
-       pdf_url=new StringBuilder().append("https://quasartechsolutions.in/manvaasam/invoice.php?manid=").append(manid).toString();
+       pdf_url=new StringBuilder().append("https://manvaasam.com/logistics/invoice.php?manid=").append(manid).toString();
        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(pdf_url));
        Toast.makeText(sucess.this,"Opening Invoice....",Toast.LENGTH_SHORT).show();
        startActivity(browserIntent);

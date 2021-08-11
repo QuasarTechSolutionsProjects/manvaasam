@@ -99,7 +99,7 @@ public class insertcourierid extends AsyncTask<String, Void,String> {
         scanid = voids[1];
 
 
-        String connstr = "https://quasartechsolutions.in/manvaasam/fetchinsert.php";
+        String connstr = "https://manvaasam.com/logistics/fetchinsert.php";
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .penaltyLog()

@@ -92,7 +92,7 @@ public class createpackage extends AsyncTask<String, Void,String> {
         String amt = voids[9];
         String cname = voids[10];
 
-        String connstr = "https://quasartechsolutions.in/manvaasam/create.php";
+        String connstr = "https://manvaasam.com/logistics/create.php";
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .penaltyLog()

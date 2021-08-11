@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 //       Code to Get the Total Amount gathered by the user from the database through Volley API
         SharedPreferences shared = getSharedPreferences("logindetails", MODE_PRIVATE);
         String channel = (shared.getString("usernameee", ""));
-        String URL = new StringBuilder().append("https://quasartechsolutions.in/manvaasam/mtotamt.php?logid=").append(channel).toString();
+        String URL = new StringBuilder().append("https://www.manvaasam.com/logistics/mtotamt.php?logid=").append(channel).toString();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
                         {
                             JSONArray jsonArray = response.getJSONArray("packages");
                                 JSONObject employee = jsonArray.getJSONObject(0);
-                                int totalamt = employee.getInt("totamt");
-                                totamt.append( "Total Amount Collected By "+channel + "\n\n" );
+                                int totalamt = employee.getInt("totpack");
+                                totamt.append( "Total Packages Collected By "+channel + "\n\n" );
                                 amt.append(" "+String.valueOf(totalamt) + "\n\n");
                         }
                         catch (JSONException e)

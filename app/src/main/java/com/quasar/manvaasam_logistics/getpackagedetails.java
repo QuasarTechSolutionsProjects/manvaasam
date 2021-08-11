@@ -137,7 +137,7 @@ public class getpackagedetails extends AsyncTask<String, Void,String> {
         id = voids[0];
 
 
-        String connstr = "https://quasartechsolutions.in/manvaasam/fetch.php";
+        String connstr = "https://manvaasam.com/logistics/fetch.php";
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .penaltyLog()
